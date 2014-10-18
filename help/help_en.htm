@@ -1,0 +1,1634 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Pictures Plugin for CMSimple</title>
+		<meta name="robots" content="noindex, nofollow" />
+		<meta http-equiv="content-type" content="text/html; charset=UTF-8" />
+		<meta name="copyright" content="David Stutz" />
+		
+		<script type="text/javascript" src="js/shAutoloader.js"></script>
+		<script type="text/javascript" src="js/shCore.js"></script>
+		
+		<script type="text/javascript" src="js/shBrushPhp.js"></script>
+		<script type="text/javascript" src="js/shBrushCss.js"></script>
+		 
+		<link href="css/shCore.css" rel="stylesheet" type="text/css" />
+		<link href="css/shCoreDefault.css" rel="stylesheet" type="text/css" />
+		
+		<style type="text/css">
+			/* Colors: #005fa8 #f94405 */
+			#content,
+			#navigation {
+				font-family: "Liberation Sans", Helvetica, Arial, sans-serif;
+				font-size: 12pt;
+				color: #444444;
+				float: left;
+			}
+			#navigation {
+				width: 16%;
+				padding-right: 1%;
+				margin-right: 1%;
+				border-right: 1px solid #DDDDDD;
+				font-size: 90%;
+			}
+			#content {
+				width: 80%;
+			}
+			#content a,
+			#navigation a {
+				text-decoration: none;
+				color: #005fa8;
+			}
+			#content a:hover,
+			#navigation a:hover {
+				color: #f94405;
+			}
+			#content img {
+				border:1px solid #777;
+				padding:10px;
+				margin:10px;
+			}
+			#content h1 a, 
+			#content h2 a, 
+			#content h3 a, 
+			#content h4 a{
+				color: #444444;
+			}
+			#content h1 a:hover, 
+			#content h2 a:hover, 
+			#content h3 a:hover, 
+			#content h4 a:hover{
+				color: #444444;
+			}
+			#content h1 {
+				font-size: 20pt;
+				border-bottom: 1px solid #DDDDDD;
+			}
+			#content h2 {
+				font-size: 18pt;
+				border-bottom: 1px solid #DDDDDD;
+			}
+			#content h3 {
+				font-size: 16pt;
+				border-bottom: 1px solid #DDDDDD;
+			}
+			#content h4 {
+				font-size: 14pt;
+				border-bottom: 1px solid #DDDDDD;
+			}
+			#content .toplink {
+				margin-right: 1em;
+				color: #005fa8;
+			}
+			#content ul {
+				list-style-type: square;
+			}
+			#content ul ul {
+				list-style-type: circle;
+			}
+			#navigation ol {
+				list-style-type: upper-roman;
+				margin-left: 0;
+				padding-left: 1.6em;
+			}
+			#navigation ol ol {
+				list-style-type: decimal;
+				margin-left: .2em;
+				padding-left: .6em;
+			}
+			#navigation ol ol ol {
+				list-style-type: lower-latin;
+				margin-left: .2em;
+				padding-left: .6em;
+			}
+			#navigation ol ol ol ol {
+				list-style-type: lower-roman;
+				margin-left: .1em;
+				padding-left: .6em;
+			}
+			#content .notice {
+				padding:.8em;
+				margin-bottom:1.6em;
+				border:2px solid #ddd;
+				background:#FFF6BF;
+				color:#514721;
+				border-color:#FFD324;
+			}
+			#content .code {
+				font-family:"Courier New", Courier, monospace;
+				background: #FAFAFA;
+				border: 1px dotted #777777;
+				padding: 10px;
+				margin: 1em;
+				text-align: left;
+				word-wrap: break-word;
+			}
+			#content .code {
+				list-style-type: none;
+			}
+			#content .toplink {
+				float: right;
+				font-weight: normal;
+				font-size: 12pt;
+			}
+		</style>
+	</head>
+	
+	<body>
+		<div id="navigation">
+			<ol>
+				<li><a href="#introduction">Introduction</a></li>
+				<li><a href="#version">Version</a></li>
+				<li>
+					<a href="#requirements">Requirements</a>
+					<ol>
+						<li><a href="#requirements-php">PHP</a></li>
+						<li><a href="#requirements-cmsimple">Supported CMSimple versions</a></li>
+						<li><a href="requirements-query4cmsimple">jQuery4CMSimple</a></li>
+					</ol>
+				</li>
+				<li>
+					<a href="#installation">Installation</a>
+					<ol>
+						<li><a href="#installation-xh">CMSimple XH</a></li>
+						<li><a href="#installation-other">CMSimple 3.3 and CMSimple LE</a></li>
+					</ol>
+				</li>
+				<li>
+					<a href="#configuration">Configuration</a>
+					<ol>
+						<li><a href="#configuration-general">General</a></li>
+						<li>
+							<a href="#configuration-options">Configuration options</a>
+							<ol>
+								<li><a href="#configuration-options-images">How to change CMSimple images folder</a></li>
+							</ol>
+						</li>
+						<li><a href="#configuration-sort-function">Custom sort functions</a></li>
+						<li><a href="#configuration-file">The configuration file</a></li>
+						<li><a href="#configuration-backend">Backend configuration</a></li>
+					</ol>
+				</li>
+				<li>
+					<a href="#usage">Usage</a>
+					<ol>
+						<li><a href="#usage-getting-started">Calling the Plugin</a></li>
+						<li><a href="#usage-drivers">Drivers</a>
+							<ol>
+								<li><a href="#usage-drivers-notes">Notes on the drivers</a></li>
+							</ol>
+						</li>
+						<li><a href="#usage-template">Using in a template</a></li>
+						<li><a href="#usage-lightboxes">Lightboxes</a></li>
+						<li>
+							<a href="#usage-examples">Usage and Configuration examples</a>
+							<ol>
+								<li><a href="#usage-examples-table">Table driver</a></li>
+								<li><a href="#usage-examples-coinslider">Coinslider driver</a></li>
+								<li><a href="#usage-examples-bxslider">Bxslider driver</a></li>
+								<li><a href="#usage-examples-bxslider4">Bxslider4 driver</a></li>
+								<li><a href="#usage-examples-bxslider-template">Bxslider driver in templates</a></li>
+								<li><a href="#usage-examples-innerfade">Innfade driver</a></li>
+								<li><a href="#usage-examples-innerfade-template">Innfade driver in templates</a></li>
+							</ol>
+						</li>
+						<li><a href="#usage-empty-galleries">Empty galleries</a></li>
+						<li><a href="#usage-thumbnails">Thumbnails</a></li>
+					</ol>
+				</li>
+				<li>
+					<a href="#backend">Backend</a>
+					<ol>
+						<li>
+							<a href="#backend-galleries">Galleries</a>
+							<ol>
+								<li><a href="#backend-galleries-new">New gallery</a></li>
+								<li><a href="#backend-galleries-setting">Gallery settings</a></li>
+								<li><a href="#backend-galleries-regenerate">Regenerate thumbnails</a></li>
+								<li><a href="#backend-galleries-delete">Delete gallery</a></li>
+							</ol>
+						</li>
+						<li>
+							<a href="#backend-galleries">Images</a>
+							<ol>
+								<li><a href="#backend-images-add">Add image</a>
+									<ol>
+										<li><a href="#backend-image-add-filebrowser">Using filebrowser</a></li>
+										<li><a href="#backend-image-add-plugin">Using plugin</a></li>
+									</ol>
+								</li>
+								<li><a href="#backend-images-preview">Thumbnail preview</a></li>
+								<li><a href="#backend-images-delete">Delete image</a></li>
+							</ol>
+						</li>
+					</ol>
+				</li>
+				<li><a href="#custom-styling">Custom styling</a></li>
+				<li><a href="#icons">Icons</a></li>
+				<li><a href="#notes">Notes</a></li>
+				<li><a href="#changelog">Changelog</a></li>
+				<li>
+					<a href="#license">License</a>
+					<ol>
+						<li><a href="#license-plugin">The plugin's license</a></li>
+						<li><a href="#license-jQuery">jQuery</a></li>
+						<li><a href="#license-coinslider">Coinslider</a></li>
+						<li><a href="#license-bxslider">Bxslider</a></li>
+						<li><a href="#license-lightbox">Lightbox</a></li>
+						<li><a href="#license-shutter">Shutter reloaded</a></li>
+						<li><a href="#license-prettyphoto">prettyPhoto</a></li>
+					</ol>
+				</li>
+			</ol>
+		</div>
+		
+		<div id="content">
+			<h1>Pictures Plugin for CMSimple</h1>
+			
+				<h2><a name="introduction">Introduction</a><a class="toplink" href="#">Back to top</a></h2>
+				
+					<p>This plugin is designed to simplify the management and frontend presentation of image galleries. The plugin allows uploading images to different categories and displaying them using different so called "drivers". Currently supported drivers are:</p>
+					
+					<ul>
+						<li><b>table</b>: Displaying the images in a table using jQuery lightbox.</li>
+						<li><b>list</b>: Displaying the images in a list using jQuery lightbox.</li>
+						<li><b>coinslider</b>: Using jQuery coinslider to display the images.</li>
+						<li><b>bxslider</b>: Using jQuery bxslider to display the images.</li>
+						<li><b>bxslider4</b>: Using the 4th versio of bxslider.</li>
+						<li><b>innerfade</b>: Using the JQuery innerfade plugin.</li>
+					</ul>
+					
+					<p>All drivers are high configurable. The plugin supports multiple galleries with different drivers on one CMSimple page.</p>
+					
+					<p>Additionally different lightbox clones are supported and can be configured gallery independant.</p>
+					
+					<img src="pictures.png" alt="Pictures frontend view using the table driver." />
+					
+				<h2><a name="version">Version</a><a class="toplink" href="#">Back to top</a></h2>
+				
+					<p>This is currently version 1.0.0 of the plugin, released 18th October 2014.</p>
+				
+				<h2><a name="requirements">Requirements</a><a class="toplink" href="#">Back to top</a></h2>
+				
+					<h3><a name="requirements-php">PHP</a><a class="toplink" href="#">Back to top</a></h3>
+					
+						<p>Currently the plugin works using <code>fputcsv()</code>, <code>fgetcsv()</code> so a PHP version 5 or higher is required (and is recommended).</p>
+					
+					<h3><a name="requirements-cmsimple">Supported CMSimple versions</a><a class="toplink" href="#">Back to top</a></h3>
+					
+						<ul>
+							<li><b>CMSimple XH 1.5 or higher (recommended)</b></li>
+							<li>CMSimple XH 1.4.2</li>
+							<li>CMSimple XH 1.1.4</li>
+							<li>CMSimple Realblog 1.5 or higher</li>
+							<li style="text-decoration: line-through;">CMSimple LE 3.4(.1) (Pluginloader needed, see installation guide below)</li>
+							<li style="text-decoration: line-through;">CMSimple 3.3 (Pluginloader needed, see installation guide below)</li>
+						</ul>
+				
+					<h3><a name="requirements-jQuery4cmsimple">jQuery4CMSimple</a><a class="toplink" href="#">Back to top</a></h3>
+				
+						<p class="notice">The plugin will work without jQuery4CMSimple, but <b>the use of jQuery4CMSimple is highly recommended</b>!</p>
+				
+						<p>Get jQuery4CMSimple: <a href="http://www.cmsimple-xh.com/wiki/doku.php/plugins:jQuery4cmsimple" target="_blank">jQuery4CMSimple</a></p>
+				
+						<p>The plugin uses jQuery4CMSimple if available. This will reduce the possibility of clashes with other plugins and improve the site's web performance, because jQuery and used plugins are included only once.</p>
+				
+				
+				<h2><a name="installation">Installation</a><a class="toplink" href="#">Back to top</a></h2>
+				
+					<h3><a name="installation-xh">CMSimple XH</a><a class="toplink" href="#">Back to top</a></h3>
+						<ul>
+							<li>Download the plugin.</li>
+							<li>In the <code>plugins</code> folder, create a subfolder <code>pictures</code>.</li>
+							<li>Extract the files into the <code>pictures</code> folder.</li>
+							<li>The plugin stores the gallery configurations in CSV files in /content/plugins/pictures. The folder is created automatically (mostly).This folder needs write and read permissions. The plugin does check this permissions and tries to alter this permissions if needed.</li>
+							<li>Go into backend and see if the installation is detected correctly.</li>
+						</ul>
+				
+					<h3><a name="installation-other">CMSimple 3.3 and CMSimple LE</a><a class="toplink" href="#">Back to top</a></h3>
+					
+						<p class="notice">This installation guide is left from older versions. This version does not support CMSimple LE and the original CMSimple, see <a href="#requirements-cmsimple">supported CMSimple versions</a>.</p>
+					
+						<p>The images are taken in CMSimple 3.3, but should help installing the plugin in CMSimple LE, too.</p>
+						<ul>
+							<li>Download a working Pluginloader, see <a href="http://cmsimplewiki.com/doku.php/pluginloader/pluginloader">CMSimple Wiki: Pluginloader</a> or the <a href="http://www.cmsimpleforum.com/">CMSimple Forum</a> to get the current version.</li>
+							<li>Create a folder named <code>plugins</code> in the CMSimple root directory.</li>
+							<li>Extract the pluginloader into this directory. Check that both <code>plugins/index.php</code> and <code>plugins/pluginloader</code> are there.</li>
+							<li>Edit cmsimple/config.php and add: </li>
+						</ul>
+						<pre class="brush: php">
+$cf['plugins']['folder'] = "plugins";
+						</pre>
+						<ul>
+							<li>Go in your CMSimple backend, choose 'Settings' and edit configuration:</li>
+						</ul>
+							
+							<img src="pictures-cmsimple-3-3.png" alt="CMSimple 3.3 settings." />
+
+						<ul>
+							<li>Look for the plugins_folder configuration key:</li>
+						</ul>
+						
+						<img src="pictures-cmsimple-3-3-config.png" alt="CMSimple plugins_folder configuration." />
+						
+						<ul>
+							<li>In the <code>plugins</code> folder, create a subfolder called <code>pictures</code></li>
+							<li>Extract the files into the <code>pictures</code> folder.</li>
+						</ul>
+				
+				<h2><a name="configuration">Configuration</a><a class="toplink" href="#">Back to top</a></h2>
+				
+					<p>Configuration can either be done by directly editing config.php or by using the backend.</p>
+					
+					<h3><a name="configuration-general">General</a><a class="toplink" href="#">Back to top</a></h3>
+					
+					<p>Some general notes about configuration:</p>
+					
+					<ul>
+						<li>To each configuration key there is the type of excepted value given with the help text, read them carefully before making changes!</li>
+						<li>Unsigned integer means a positive integer (including zero). Only digits accepted. Examples: 0, 011, 115, 1, 3.</li>
+						<li>If a number of valid options are given these are case-sensitive. Example: 'true', 'false', 'fade'.</li>
+						<li>An empty field is not always a valid input.</li>
+					</ul>
+					
+					<h3><a name="configuration-options">Configuration options</a><a class="toplink" href="#">Back to top</a></h3>
+					
+						<p>General gallery-independant options:</p>
+					
+						<ul>
+							<li><b>csv_folder</b>: The folder where to store the galleries with their images. Relative to the CMSimple images folder.</li>
+							<li><b>csv_filepath</b>: The path where to store the CSV files for gallery configuration, relative to CMSimple root.</li>
+							<li><b>csv_delimiter</b>: The delimiter used between cells in all CSV files.</li>
+							<li><b>folder_images</b>: The subfolder created in the CMSimple images folder to hold all galleries.</li>
+							<li><b>images_thumbnail_compression</b>: Define the compression rate for the thumbnails. For <b>images_thumbnail_extension</b> set to 'png' choose an integer betwwen 0 and 10 with 0 for no compression and 10 for highest compression. With <b>images_thumbnail_extension</b> set to 'jpeg' choose an integer between 0 and 100 with 0 for the lowest quality (highest compression) and 100 for the highest quality (no compression). Default for 'jpeg' would be 75.</li>
+							<li><b>images_thumbnail_extension</b>: The extension used for thumbnails. Currently only 'png' and 'jpeg' are supported. Note that depending on the chosen extension the compression rate need to be adjusted.</li>
+							<li><b>images_sort_function</b>: The function used for sorting the images. Currently supported: 'pictures_sort_asc', 'pictures_sort_desc'. To implement your own see <a href="#configuration-sort-function">here</a>.</li>
+							<li><b>galleries_sort_function</b>: The function used for sorting the galleries. Currently supported: 'pictures_galleries_sort_asc', 'pictures_galleries_sort_desc'.</li>
+							<li><b>coinslider_text_next</b>: The text displayed in the "next" button for the coinslider driver. String.</li>
+							<li><b>coinslider_text_prev</b>: The text displayed in the "previous" button for the coinslider driver. String.</li>
+						</ul>
+						
+						<p class="notice">There is no need to edit <b>csv_filepath</b>, <b>csv_delimiter</b>, <b>images_folder</b> and <b>csv_delimiter</b>. Important: Do not edit these settings in production environment, all old gallery configurations will not be read correctly.</p>
+						
+						<ul>
+							<li><b>images_extensions</b>: All allowed extensions for the images.</li>
+						</ul>
+						
+						<p>The following options are dependant on the gallery. They can be adjusted for each gallery individual.</p>
+						
+						<ul>
+							<li><b>images_thumbnail_width</b>: Width of created thumbnails of this gallery. Unsigned integer. The thumbnails will be created automatically.</li>
+							<li><b>Default configuration for table driver</b>
+								<ul>
+									<li><b>table_columns</b>: Number of columns when using the table driver.</li>
+								</ul>
+							</li>
+							<li><b>Default configuration for coinslider driver</b>
+								<ul>
+									<li><b>coinslider_width</b>: Width of the slider. Unsigned integer.</li>
+									<li><b>coinslider_height</b>: Height of the slider. Unsigned integer.</li>
+									<li><b>coinslider_spw</b>: Number of squares per width. Unsigned integer.</li>
+									<li><b>coinslider_sph</b>: Number of squares per height. Unsigned integer.</li>
+									<li><b>coinslider_delay</b>: The delay between images in ms. Unsigned integer.</li>
+									<li><b>coinslider_s_delay</b>: The delay between single squares in ms. Unsigned integer.</li>
+									<li><b>coinslider_opacity</b>: The opacity. A value between 0 and 1, e.g. 0.7.</li>
+									<li><b>coinslider_title_speed</b>: Speed of title appearance in ms. Unsigned integer. This option is not supported yet.</li>
+									<li><b>coinslider_effect</b>: The used effect. 'random', 'swirl', 'rain', 'straight' (or empty).</li>
+									<li><b>coinslider_navigation</b>: Show coinslider navigation (next, previous, navigation below the slider). 'true' or 'false'.</li>
+									<li><b>coinslider_hover_pause</b>: Pause on mouse over. 'true' or 'false'.</li>
+								</ul>
+							</li>
+							<li><b>Default configuration for bxslider driver</b>
+								<ul>
+									<li><b>bxslider_mode</b>: The mode of the slider. 'horizontal', 'vertical' or 'fade'.</li>
+									<li><b>bxslider_speed</b>: The speed of the transitions in ms. Unsigned integer.</li>
+									<li><b>bxslider_inifite_loop</b>: Use slider with an infinite loop (carousel). 'true' or 'false'.</li>
+									<li><b>bxslider_controls</b>: Display controls (next and previous). 'true' or 'false'.</li>
+									<li><b>bxslider_random</b>: Start slider with random image. 'true' or 'false'.</li>
+									<li><b>bxslider_hide_controls_on_end</b>: Will hide next button at the last image and previous button at the first one. 'true' or 'false'.</li>
+									<li><b>bxslider_auto</b>: Enable/disable automatical slide. 'true' or 'false'.</li>
+									<li><b>bxslider_auto_controls</b>: Enable/disable automatical slide controls (start, stop). 'true' or 'false'.</li>
+									<li><b>bxslider_auto_delay</b>: Delay between images if auto-slide is enabled in ms. Unsigned integer.</li>
+									<li><b>bxslider_auto_start_delay</b>: Delay for starting auto-slide in ms. Unsigned integer.</li>
+									<li><b>bxslider_hover_pause</b>: Pause on mouse over. 'true' or 'false'.</li>
+									<li><b>bxslider_auto_start</b>: Enable auto start of auto-slide. If not the slider starts if the start button is pressed. 'true' or 'false'.</li>
+									<li><b>bxslider_pager</b>: Enable/disable pager (navigation). 'true' or 'false'.</li>
+									<li><b>bxslider_pager_location</b>: The location of the pager. 'top' or 'bottom'.</li>
+									<li><b>bxslider_quantity</b>: The number of images shown at once. Unsigned integer.</li>
+									<li><b>bxslider_quantity_move</b>: The number of slides to move at once. Unsigned integer.</li>
+									<li><b>bxslider_lightbox</b>: Enables or disables the usage of a lightbox within the slider, so will enable/disable the lightbox on the images in the slider. 'true' or 'false'.</li>
+									<li><b>bxslider_original</b>: Whether to use the original images instead of the thumbnails in the slider. 'true' or 'false'. Notice: If you are using this option all used images should have equal width. And, nevertheless, remember to set the images_thumbnail_width to the appropriate value, because bxlider needs a fix value for the width!</li>
+								</ul>
+							</li>
+							<li><b>Default configuration for innerfade driver</b>
+								<ul>
+									<li><b>innerfade_speed</b>: The time of the transition in ms. Unsigned integer.</li>
+									<li><b>innerfade_timeout</b>: The time a single image is shown before fading in the next one in ms. Unsigned integer.</li>
+									<li><b>innerfade_type</b>: String. 'sequence' or 'random'.</li>
+								</ul>
+							</li>
+							<li><b>Lightbox configuration</b>
+								<ul>
+									<li><b>lightbox_driver</b>: The used lightbox "driver", meaning the plugin used as lightbox. 'lightbox' (default), 'shutter' or 'prettyphoto'.</li>
+									<li><b>lightbox_prettyphoto_theme</b>: The used theme when prettyphoto is selected as lightbox. 'pp_default', 'light_rounded', 'dark_rounded', 'light_square', 'dark_square', 'facebook'.</li>
+								</ul>
+							</li>
+							<li><b>Default configuration for bxslider4 driver.</b>
+								<ul>
+									<li><b>bxslider4_slides_min</b>: The minimum number of slides in carousel. Unsigned integer.</li>
+									<li><b>bxslider4_slides_max</b>: The maximum number of slides in carousel. Unsigned integer.</li>
+									<li><b>bxslider4_slides_margin</b>: The margin between two slides when used as carousel. Unsigned integer.</li>
+									<li><b>bxslider4_lightbox</b>: Enables or disables the usage of a lightbox within the slider, so will enable/disable the lightbox on the images in the slider. 'true' or 'false'.</li>
+									<li><b>bxslider4_original</b>: Whether to use the original images instead of the thumbnails in the slider. 'true' or 'false'. Notice: If you are using this option all used images should have equal width. And, nevertheless, remember to set the images_thumbnail_width to the appropriate value, because bxlider needs a fix value for the width!</li>
+									<li><b>bxslider4_slides_move</b>: How many slides to move at once. Unsigned integer.</li>
+								</ul>
+							</li>
+						</ul>
+						
+						<b>Driver options independant of the gallery:</b>
+					
+						<ul>
+							<li><b>bxslider_template</b>: Will include JQuery and BxSlider in the template. For using Bxslider in the template see <a href="#usage-template">here</a>. 'true' or 'false'.</li>
+							<li><b>innerfade_template</b>: Will include JQuery and innerface in the template. 'true' or 'false'.</li>
+							<li><b>bxslider4_template</b>: Will include JQuery and the 4th version of BxSlider in the template. 'true' or 'false'.</li>
+						</ul>
+					
+						<h4><a name="configuration-images">How to change CMSimple images folder</a><a class="toplink" href="#">Back to top</a></h4>
+							
+							<p class="notice">Do not forget the ending '/'.</p>
+							
+							<p>In CMSimple backend:</p>
+							
+							<img src="pictures-cmsimple-config.png" alt="Edit CMSimple configuration." />
+							
+							<img src="pictures-cmsimple-images.png" alt="Edit CMSimple images folder." />
+					
+							<p>By editing config.php:</p>
+					
+							<pre class="brush: php">
+$cf['folders']['images']="images/";
+							</pre>
+					
+					<h3><a name="configuration-file">Custom sort functions</a><a class="toplink" href="#">Back to top</a></h3>
+					
+						<p>Implement custom sort functions in pictures.php as follows:</p>
+					
+						<pre class="brush: php">
+if (!function_exists('pictures_sort_desc'))
+{
+	/**
+	 * Function to order news desc by their date. 
+	 * 
+	 * @param array a
+	 * @param array b
+	 * 
+	 * @return <int> order
+	 */
+	function pictures_sort_desc($a, $b)
+	{
+	    if ($a->name() == $b->name())
+		{
+	        return 0;
+	    }
+	    return strcmp($a->name(), $b->name()) < 0 ? 1 : -1;
+	}
+}
+						</pre>
+					
+						<p>$a and $b are two variables of class Pictures_Image. The following methods are available for sorting:</p>
+					
+						<pre class="brush: php">
+$image->name() // Get the image file name.
+$image->file() // Full file path.
+						</pre>
+					
+					<h3><a name="configuration-file">The configuration file</a><a class="toplink" href="#">Back to top</a></h3>
+					
+						<pre class="brush: php">
+/**
+ * Subfolder for galleries. Automatically created in the images folder defined by CMSimple config.
+ * @warning Without '/' at the end.
+ * @var	
+ */
+$plugin_cf["pictures"]["images_folder"] = "galleries";
+/**
+ * Filepath for storing gallery CSV.
+ * @var
+ */
+$plugin_cf["pictures"]["csv_filepath"] = "content/plugins/pictures";
+/**
+ * Acceptable image types. Seperated by ','.
+ * @var
+ */
+$plugin_cf["pictures"]["images_extensions"] = "jpg,jpeg,png,gif,PNG,JPEG,JPG,GIF";
+/**
+ * Width for thumbnails.
+ * @var
+ */
+$plugin_cf["pictures"]["images_thumbnail_width"] = "300";
+/**
+ * Extension type for created thumbnails.
+ * @var
+ */
+$plugin_cf["pictures"]["images_thumbnail_extension"] = "png";
+/**
+ * Comrpession(quality) rate for thumbnails.
+ * For png mode: between 0 and 10 with 0 no compression and 10 highest compression.
+ * For jpeg mode: between 0 and 100 with 0 lowest quality and 100 highest quality.
+ * @var
+ */
+$plugin_cf["pictures"]["images_thumbnail_compression"] = "9";
+/**
+ * Comrpession rate for thumbnails.
+ * @var
+ */
+$plugin_cf["pictures"]["images_sort_function"] = "pictures_sort_asc";
+/**
+ * Delimiter for CSV files.
+ * @var
+ */
+$plugin_cf["pictures"]["csv_delimiter"] = "#";
+/**
+ * Enclosure for CSV files.
+ * @var
+ */
+$plugin_cf["pictures"]["csv_enclosure"] = "\"";
+
+/**
+ * Table driver default values.
+ */
+/**
+ * Number of thumbnails in a row.
+ * @var
+ */
+$plugin_cf["pictures"]["table_columns"] = 3;
+
+/**
+ * Coinslider driver default values.
+ */
+/**
+ * Width of slider.
+ * @var
+ */
+$plugin_cf["pictures"]["coinslider_width"] = "300";
+/**
+ * Height of slider.
+ * @var
+ */
+$plugin_cf["pictures"]["coinslider_height"] = "225";
+/**
+ * Squares per width.
+ * @var
+ */
+$plugin_cf["pictures"]["coinslider_spw"] = "7";
+/**
+ * Squares per height.
+ * @var
+ */
+$plugin_cf["pictures"]["coinslider_sph"] = "5";
+/**
+ * Time between images.
+ * @var
+ */
+$plugin_cf["pictures"]["coinslider_delay"] = "3000";
+/**
+ * Time between squares in ms.
+ * @var
+ */
+$plugin_cf["pictures"]["coinslider_s_delay"] = "30";
+/**
+ * Opacity of title and navigation.
+ * @var
+ */
+$plugin_cf["pictures"]["coinslider_opacity"] = "0.7";
+/**
+ * Speed of title appearance.
+ * @var
+ */
+$plugin_cf["pictures"]["coinslider_title_speed"] = "500";
+/**
+ * Used effect: random, swirl, rain, straight (or empty).
+ * @var
+ */
+$plugin_cf["pictures"]["coinslider_effect"] = "";
+/**
+ * The navigation below the slider, next and previous buttons.
+ * @var
+ */
+$plugin_cf["pictures"]["coinslider_navigation"] = "true";
+/**
+ * Pause on hover.
+ * @var
+ */
+$plugin_cf["pictures"]["coinslider_hover_pause"] = "true";
+/**
+ * Text displayed for next button.
+ * @var
+ */
+$plugin_cf["pictures"]["coinslider_text_next"] = "vor";
+/**
+ * Text displayed for next button.
+ * @var
+ */
+$plugin_cf["pictures"]["coinslider_text_prev"] = "zurück";
+
+/**
+ * Bxslider driver default values.
+ */
+/**
+ * Used mode: 'horizontal', 'vertical', 'fade'.
+ * @var
+ */
+$plugin_cf["pictures"]["bxslider_mode"] = "horizontal";
+/**
+ * Speed in ms.
+ * @var
+ */
+$plugin_cf["pictures"]["bxslider_speed"] = "500";
+/**
+ * Defines infinite looping. 'true' or 'false'.
+ */
+$plugin_cf["pictures"]["bxslider_infinite_loop"] = "true";
+/**
+ * Display controls (previous and next).
+ * @var
+ */
+$plugin_cf["pictures"]["bxslider_controls"] = "false";
+/**
+ * Enable/disable random slide.
+ * @var
+ */
+$plugin_cf["pictures"]["bxslider_random"] = "false";
+/**
+ * Hide "next" image at the end and "previous" image at the start.
+ * @var
+ */
+$plugin_cf["pictures"]["bxslider_hide_controls_on_end"] = "false";
+/**
+ * Enable auto slide.
+ * @var
+ */
+$plugin_cf["pictures"]["bxslider_auto"] = "false";
+/**
+ * Show auto controls.
+ * @var
+ */
+$plugin_cf["pictures"]["bxslider_auto_controls"] = "false";
+/**
+ * Delay between images in ms.
+ * @var
+ */
+$plugin_cf["pictures"]["bxslider_auto_delay"] = "3000";
+/**
+ * Delay before starting the auto slider
+ * @var
+ */
+$plugin_cf["pictures"]["bxslider_auto_start_delay"] = "500";
+/**
+ * Pause on hover.
+ * @var
+ */
+$plugin_cf["pictures"]["bxslider_hover_pause"] = "true";
+/**
+ * Should slider start automatically or should be waited for start control to be pressed? 'true' or 'false'.
+ * @var
+ */
+$plugin_cf["pictures"]["bxslider_auto_start"] = "true";
+/**
+ * Enable page navigation.
+ * @var
+ */
+$plugin_cf["pictures"]["bxslider_pager"] = "true";
+/**
+ * Location of the pager. 'top' or 'bottom'.
+ * @var
+ */
+$plugin_cf["pictures"]["bxslider_pager_location"] = "bottom";
+/**
+ * Number of shown images at once.
+ * @var
+ */
+$plugin_cf["pictures"]["bxslider_quantity"] = 1;
+/**
+ * Number of slides to move at once.
+ * @var
+ */
+$plugin_cf["pictures"]["bxslider_quantity_move"] = 1;
+/**
+ * Show iamges on slider as link with lightbox.
+ * @var
+ */
+$plugin_cf["pictures"]["bxslider_lightbox"] = "true";
+/**
+ * Include bxslider in template. So bxslider sliders can be added in the template.
+ * @var
+ */
+$plugin_cf["pictures"]["bxslider_template"] = "true";
+/**
+ * Whether to use the original images instead of the thumbnails in the slider.
+ * @var
+ */
+$plugin_cf["pictures"]["bxslider_original"] = "false";
+
+/**
+ * Bxslider 4 driver default values.
+ */
+/**
+ * Minimum number of slides in carousel.
+ * @var
+ */
+$plugin_cf["pictures"]["bxslider4_slides_min"] = 2;
+/**
+ * Maximum number of slides in carousel.
+ * @var
+ */
+$plugin_cf["pictures"]["bxslider4_slides_max"] = 3;
+/**
+ * Minimum number of slides in carousel.
+ * @var
+ */
+$plugin_cf["pictures"]["bxslider4_slides_margin"] = 10;
+/**
+ * Whether to use the original images instead of the thumbnails in the slider.
+ * @var
+ */
+$plugin_cf["pictures"]["bxslider4_original"] = "false";
+/**
+ * Show iamges on slider as link with lightbox.
+ * @var
+ */
+$plugin_cf["pictures"]["bxslider4_lightbox"] = "true";
+/**
+ * How many slides to move at once.
+ * @var
+ */
+$plugin_cf["pictures"]["bxslider4_slides_move"] = 1;
+/**
+ * Include bxslider4 in template. So bxslider4 sliders can be added in the template.
+ * @var
+ */
+$plugin_cf["pictures"]["bxslider4_template"] = "true";
+   
+/**
+ * Lightboxes configuration and drivers.
+ */
+/**
+ * Used driver for lightbox. Avaiable: 'lightbox', 'shutter', 'prettyphoto'.
+ * @var
+ */
+$plugin_cf["pictures"]["lightbox_driver"] = "lightbox";
+/**
+ * Prettyphoto theme.
+ * Themes available: pp_default / light_rounded / dark_rounded / light_square / dark_square / facebook
+ * @var
+ */
+$plugin_cf["pictures"]["lightbox_prettyphoto_theme"] = "pp_default";
+	
+/**
+ * Innerfade driver default values.
+ */
+/**
+ * Speed in ms.
+ * @var
+ */
+$plugin_cf["pictures"]["innerfade_speed"] = "2000";
+/**
+ * Timeout in ms.
+ * @var
+ */
+$plugin_cf["pictures"]["innerfade_timeout"] = "500";
+/**
+ * 'sequence' or 'random'.
+ * @var
+ */
+$plugin_cf["pictures"]["innerfade_type"] = "sequence";
+/**
+ * Include bxslider in template. So bxslider sldiers can be added in the template.
+ * @var
+ */
+$plugin_cf["pictures"]["innerfade_template"] = "true";
+						</pre>
+				
+					<h3><a name="configuration-backend">Backend configuration</a><a class="toplink" href="#">Back to top</a></h3>
+				
+					<p>See the help texts of the options to see if your changes are valid.</p>
+				
+					<img src="pictures-config.png" alt="Backend configuration." />
+				
+				<h2><a name="usage">Usage</a><a class="toplink" href="#">Back to top</a></h2>
+				
+					<h3><a name="usage-getting-started">Calling the plugin</a><a class="toplink" href="#">Back to top</a></h3>
+					
+						<p>For calling the plugin on some of your pages use one of the following scripts:</p>
+						
+						<ul>
+							<li>CMSimple scripting: <b>#CMSimple $o .= pictures('galleryname', 'driver'); #</b></li>
+							<li>New CMSimple_XH scripting: <b>{{{PLUGIN:pictures('galleryname', 'driver');}}}</b></li>
+						</ul>
+						
+						<p>The function expects two parameters: The first one defines the gallery (string, not empty), the second one defines the used driver (string, default is 'table').</p>
+						
+					<h3><a name="usage-drivers">Drivers</a><a class="toplink" href="#">Back to top</a></h3>
+								
+						<p>The plugin supports different so called "drivers", meaning different kinds of gallery presentation.</p>
+						
+						<p>A small introduction into the different dirvers:</p>
+								
+						<ul>
+							<li><b>list</b>: The images will be inserted into a list (ul tag). The list can be styled using CSS and so there can be created very nice galleries.</li>
+							<li><b>table</b>: The images will be inserted into a table with the configured column number. The table and its cells can be styled using CSS and so very nice galleries can be created.</li>
+							<li><b>coinslider</b>: Uses the <a href="http://workshop.rs/projects/coin-slider/">coinslider jQuery plugin</a> for presentation. The slider width and height need to be adjusted according the thumbnail width. Coinslider looks great with using images of the same <a href="http://en.wikipedia.org/wiki/Aspect_ratio_%28image%29">aspect ratio</a>.</li>
+							<li><b>bxslider</b>: Uses the <a href="http://bxslider.com/">bxslider jQuery plugin</a> for presentation. There are a lot of options for configuring it and great carousels can be created with images of the same <a href="http://en.wikipedia.org/wiki/Aspect_ratio_%28image%29">aspect ratio</a>.</li>
+							<li><b>innerfade</b>: Uses the <a href="http://medienfreunde.com/lab/innerfade/">innerfade JQuery plugin</a> for displaying the images.</li>
+						</ul>
+						
+						<h4><a name="usage-drivers-notes">Notes on the drivers</a><a class="toplink" href="#">Back to top</a></h4>
+								
+						<p><b>Coinslider</b></p>
+						
+						<p>The coinslider jQuery plugin is having problems with uplaoded images having whitespace in it. There is currently no funcitonality included in this plugin automatically renaming the images on upload, because the upload via filebrowser should be the same result as uploading through the plugin. So If you are aimed for using coinlsider make sure the filenames do not contain whitespace characters.</p>
+						
+					<h3><a name="usage-template">Using in a template</a><a class="toplink" href="#">Back to top</a></h3>
+								
+					<p>Currently the following drivers are supported for usage in tempaltes:</p>
+								
+					<ul>
+						<li>Table</li>
+						<li>List</li>
+						<li>Bxslider</li>
+						<li>Innerfade</li>
+					</ul>
+					
+					<p>Especially Bxslider should be interesting.</p>
+								
+					<b>Using Bxslider in templates</b>
+								
+					<p>For using Bxslider in templates there is an additional option:</p>
+								
+					<ul>
+						<li>CMSimple scripting: <b>#CMSimple $o .= pictures('galleryname', 'bxslider', TRUE); #</b></li>
+						<li>New CMSimple_XH scripting: <b>{{{PLUGIN:pictures('galleryname', 'bxslider', TRUE);}}}</b></li>
+						<li>In PHP: <b>&lt;?php echo pictures('galleryname', 'bxslider', TRUE); ?&gt;</b></li>
+					</ul>
+					
+					<p>The last option tells the plugin to include all necessary scripts in the template.</p>
+					
+					<b>Using Innerfade in templates</b>
+								
+					<p>Similar for using Bxslider in a template there is the same additional option for using innerfade in a template:</p>
+								
+					<ul>
+						<li>CMSimple scripting: <b>#CMSimple $o .= pictures('galleryname', 'innerfade', TRUE); #</b></li>
+						<li>New CMSimple_XH scripting: <b>{{{PLUGIN:pictures('galleryname', 'innerfade', TRUE);}}}</b></li>
+						<li>In PHP: <b>&lt;?php echo pictures('galleryname', 'innerfade', TRUE); ?&gt;</b></li>
+					</ul>
+					
+					<h3><a name="usage-lightboxes">Lightboxes</a><a class="toplink" href="#">Back to top</a></h3>
+								
+						<p>There are different lightbox clonse supported:</p>
+								
+						<ul>
+							<li><a href="http://leandrovieira.com/projects/jquery/lightbox/">lightBox</a></li>
+							<li><a href="http://www.jacklmoore.com/colorbox">ColorBox</a></li>
+							<li><a href="http://www.no-margin-for-errors.com/projects/prettyphoto-jquery-lightbox-clone/">prettyPhoto</a></li>
+						</ul>
+						
+						<p>The used lightbox can be configured in the gallery settings. See the available <a href="#configuration-options">configuration options</a>.</p>
+								
+					<h3><a name="usage-examples">Usage and Configuration examples</a><a class="toplink" href="#">Back to top</a></h3>
+				
+						<p>Each gallery can be configured individually, allowing to use different thumbnail sizes and settings for the drivers. Multiple galleries on one CMSimple page are supported. Also different drivers of the same gallery on one page are supported. See some configuration examples below.</p>
+				
+						<h4><a name="usage-examples-table">Table driver</a><a class="toplink" href="#">Back to top</a></h4>
+				
+							<p>The table driver is a very simple art of gallery presentation. It supports images of different <a href="http://en.wikipedia.org/wiki/Aspect_ratio_%28image%29">aspect ratio</a> without problems.</p>
+				
+							<p>The example CSS:</p>
+				
+							<pre class="brush: css">
+/* Table driver. */
+.pictures-frontend .pictures-table-driver td{
+	padding: .5em;
+}
+
+.pictures-frontend .pictures-table-driver td a img{
+	padding: 5px 5px 10px 5px;
+	background: black;
+	-moz-border-radius:10px;
+	-webkit-border-radius:10px;
+	border-radius: 10px;
+}
+							</pre>
+							
+							<p><b>pictures-table-driver</b> is the class of the table. The single cells and their images can simply be styled by there selectors like seen above. The width of the cells are depending on the thumbnail width and the set padding, the height of a row is defined by the highest image of the row.</p>
+				
+							<p>There is only one configuration key concerning the table driver: The number of columns. Set the option in the gallery-configuration:</p>
+				
+							<img src="pictures-table-columns.png" alt="Define the number of columns." />
+				
+							<p>This settings and the CSS should result in a gallery like this:</p>
+				
+							<img src="pictures-table.png" alt="The result." />
+				
+						<h4><a name="usage-examples-coinslider">Coinslider driver</a><a class="toplink" href="#">Back to top</a></h4>
+				
+							<p>For using the coinslider driver there should no styling be needed (except the surrounding div). Nevertheless the following class is provided:</p>
+				
+							<pre class="brush: css">
+/* Coinslider driver. */
+.pictures-frontend .pictures-coinslider-driver {
+	margin: 1em auto;
+}
+							</pre>
+							
+							<p>Concerning the coinslider driver there are a lot of options (see <a href="#configuration-options">Configuration Options</a>). In this example we want to create a simple slider using only images in the same <a href="http://en.wikipedia.org/wiki/Aspect_ratio_%28image%29">aspect ratio</a>.</p>
+							
+							<img src="pictures-coinslider-config.png" alt="Coinslider configuration options." />
+							
+							<p>First set width and height of the slider. The width should match the set thumbnail width. The height can be calculated with the <a href="http://en.wikipedia.org/wiki/Aspect_ratio_%28image%29">aspect ratio</a> of the images.</p>
+							
+							<p>The delay between the images could be adjusted and the number and speed of squares concerning the transition effect.</p>
+				
+							<p>There are following effects supported: 'random' (a random effect), 'swirl', 'straight' and 'rain'. Try them to select your favorite. The option can also be left empty, then the default 'random' will be set.</p>
+				
+							<p>The slider should have a simple navigation below the driver, so set "Navigation" to "true" (case-sensitive).</p>
+				
+							<p>The slider should pause on mouse over, so set "Pause on hover" to "true" (case-sensitive).</p>
+				
+							<p>These settings will result in a slider like this:</p>
+				
+							<img src="pictures-coinslider.png" alt="The resulting slider." />
+				
+						<h4><a name="usage-examples-bxslider">Bxslider driver</a><a class="toplink" href="#">Back to top</a></h4>
+				
+							<p>The Bxslider could be used similar to coinslider, but more interesting is its usage as carousel. There are a lot of options for individual styling:</p>
+				
+							<pre class="brush: css">
+/* Bxslider driver. */
+/* Important: No marign and padding on bxslider ul and li. */
+.pictures-frontend .pictures-bxslider-driver {
+	margin: 0 40px;
+	width: 660px;
+}
+
+/* Main window containing the ul (not the controls and pager). */
+.pictures-frontend .pictures-bxslider-driver .bx-window {
+	
+}
+
+/* Main li. */
+.pictures-frontend .pictures-bxslider-driver .bx-window li {
+	
+}
+
+/* Previous control. */
+.pictures-frontend .pictures-bxslider-driver .bx-prev {
+	float: left;
+	position: absolute;
+	left: -40px;
+	top: 60px;
+}
+
+/* Next control. */
+.pictures-frontend .pictures-bxslider-driver .bx-next {
+	float: right;
+	position: absolute;
+	right: -40px;
+	top: 60px;
+}
+
+/* Pager div. */
+.pictures-frontend .pictures-bxslider-driver .bx-pager {
+	margin: .5em auto;
+	text-align: center;
+}
+
+/* Anchors of the pager. */
+.pictures-frontend .pictures-bxslider-driver .bx-pager .pager-link {
+	margin: .5em;
+}
+
+/* Active pager link. */
+.pictures-frontend .pictures-bxslider-driver .bx-pager .pager-active {
+	
+}	
+								</pre>
+					
+								<p>The navigation and controls can be styled using the given classes (see <a href="#custom-styling">Custom styling</a>).</p>
+								
+								<p>There are a lot of options to setup Bxslider, here a small example to setup a carousel with navigation and controls:</p>
+								
+								<ul>
+									<li><b>bxslider_mode</b>: 'horizontal' for a horizontal slider.</li>
+									<li><b>bxslider_inifite_loop</b>: It is common for a carousel to support infinite looping. So 'true'.</li>
+									<li><b>bxslider_controls</b>: 'true' will display the controls next and previous.</li>
+									<li><b>bxslider_auto</b>: Enable/disable auto slide. 'true' or 'false'.</li>
+									<li><b>bxslider_pager</b>: Enable the navigation (at the bottom of the slider by default): 'true'.</li>
+									<li><b>bxslider_quantity</b>: Define the number of images shown at once. For example: 3.</li>
+									<li><b>bxslider_quantity_move</b>: By default the slider will move one slide at once.</li>
+								</ul>
+								
+								<p>The controls (next and previous) are icons located in plugins/pictures/images/bxslider. They are named next.png and previous.png. They can be exchanged by maintaining their filename. The icons will automatically be used as controls if controls are enabled.</p>
+								
+								<p>The carousel looks best if images of the same <a href="http://en.wikipedia.org/wiki/Aspect_ratio_%28image%29">aspect ratio</a> are used.</p>
+								
+								<p>With this options and the styling from above the result should look like this:</p>
+								
+								<img src="pictures-bxslider.png" alt="The resulting bxslider." />
+								
+								<p>With mode 'vertical' the slider could look like this (without next and previous but with pager):</p>
+								
+								<img src="pictures-bxslider-vertical.png" alt="The resulting bxslider." />
+						
+						<h4><a name="usage-examples-bxslider4">Bxslider4 driver</a><a class="toplink" href="#">Back to top</a></h4>
+						
+							<p>For the 4th version of BxSlider there are currently only a few options available to build sliders/carousels.</p>
+						
+							<p>See the following CSS which looks similar to the official stylesheet provided by BXSlider 4.</p>
+						
+							<pre class="brush: css">
+.bx-wrapper {
+	position: relative;
+	margin: 0 auto 60px;
+	padding: 0;
+	*zoom: 1;
+}
+
+.bx-wrapper img {
+	max-width: 100%;
+	display: block;
+}
+
+.bx-wrapper .bx-viewport {
+	-moz-box-shadow: 0 0 5px #ccc;
+	-webkit-box-shadow: 0 0 5px #ccc;
+	box-shadow: 0 0 5px #ccc;
+	border: solid #989D9D 3px;
+	left: -5px;
+	background: #989D9D;
+}
+
+.bx-wrapper .bx-pager,
+.bx-wrapper .bx-controls-auto {
+	position: absolute;
+	bottom: -30px;
+	width: 100%;
+}
+
+.bx-wrapper .bx-prev {
+	left: -40px;
+}
+
+.bx-wrapper .bx-next {
+	right: -40px;
+}
+
+.bx-wrapper .bx-controls-direction a {
+	color: #989D9D;
+	position: absolute;
+	top: 50%;
+	margin-top: -16px;
+	outline: 0;
+	width: 21px;
+	height: 32px;
+	text-indent: -9999px;
+	z-index: 9;
+	border: none;
+	padding: 0;
+}
+
+.bx-wrapper .bx-controls-direction a img {
+	color: #989D9D;
+	border: none !important;
+	border-color: transparent;
+}
+
+.bx-wrapper .bx-controls-direction a.disabled {
+	display: none;
+}
+
+.bx-wrapper .bx-caption {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	background: #666\9;
+	background: rgba(80, 80, 80, 0.75);
+	width: 100%;
+}
+
+.bx-wrapper .bx-caption span {
+	color: #fff;
+	font-family: Arial;
+	display: block;
+	font-size: .85em;
+	padding: 10px;
+}
+							</pre>
+						
+							<p>Set the following configuration in your gallery:</p>
+						
+							<ul>
+								<li><b>bxslider4_slides_min</b>: 2.</li>
+								<li><b>bxslider4_slides_max</b>: 2.</li>
+								<li><b>bxslider4_slides_margin</b>: 10.</li>
+								<li><b>bxslider4_original</b>: 'false'.</li>
+								<li><b>bxslider4_lightbox</b>: 'false', but can be set to 'true' for lightbox support.</li>
+								<li><b>bxslider4_slides_move</b>: 1.</li>
+							</ul>
+							
+							<p>The driver will automatically take the <code>next.png</code> and <code>previous.png</code> within <code>images/bxslider/</code> for the controls.</p>
+							
+							<p>The result:</p>
+							
+							<img src="pictures-bxslider4.png" alt="The resulting bxslider4." />
+							
+						<h4><a name="usage-examples-bxslider-template">Bxslider driver in templates</a><a class="toplink" href="#">Back to top</a></h4>
+							
+							<p>Like mentioned <a href="usage-template">here</a> the bxslider driver is supported for usage in the template. This example should give a breif overview.</p>
+							
+							<p>Today sliders are popular especially on the start page of some websites. Often the visitor gets to see a big slider.</p>
+							
+							<p>Add the following code to yout template:</p>
+							
+							<pre class="brush: php">
+&lt;?php if ($s == 0): ?&gt;
+&lt;?php echo pictures('theaser', 'bxslider', TRUE); ?&gt;
+&lt;?php endif; ?&gt;
+							</pre>
+							
+							<p>For example above the content area. The sldier will now be included in the template of the start page.</p>
+							
+							<p>The confituration options are the same as shown in the example above. The slider will automatically scale to the needed width. Take images of same width and height.</p>
+							
+							<p>To hide all controls and set auto mode make following configuration:</p>
+							
+							<ul>
+								<li><b>bxslider_mode</b>: 'horizontal' for a horizontal slider.</li>
+								<li><b>bxslider_inifite_loop</b>: 'true'.</li>
+								<li><b>bxslider_controls</b>: 'false' to hide controls.</li>
+								<li><b>bxslider_auto</b>: 'true' to get the slider auto starting.</li>
+								<li><b>bxslider_auto_delay</b>: Delay between images: 3000 (ms).</li>
+								<li><b>bxslider_auto_start_delay</b>: Delay to start slider after loading the page: 1000 (ms).</li>
+								<li><b>bxslider_speed</b>: Speed needed to go to next image: 1000 (ms).</li>
+								<li><b>bxslider_pager</b>: 'false' to disable the pager.</li>
+								<li><b>bxslider_quantity</b>: 1 - Most times only one broad image is shown at once.</li>
+								<li><b>bxslider_quantity_move</b>: 1</li>
+							</ul>
+						
+						<h4><a name="usage-examples-innerfade">Innerfade driver</a><a class="toplink" href="#">Back to top</a></h4>
+							
+							<p>The innerfade driver is quite simple. There are only three configuration option sto consider:</p>
+							
+							<ul>
+								<li><b>innerfade_speed</b>: Default 2000ms (2 seconds).</li>
+								<li><b>innerfade_timeout</b>: Default is 500mx (0.5 seconds), but this can be a bit short, so set to 1000ms.</li>
+								<li><b>innerfade_type</b>: Default: 'sequence'.</li>
+							</ul>
+						
+							<p>Note that here, too, the used images should have the same <a href="http://en.wikipedia.org/wiki/Aspect_ratio_%28image%29">aspect ratio</a>. And that's all. There are not many possiblities to configure the innerfade driver or style its appearance.</p>
+							
+						<h4><a name="usage-examples-innerfade-template">Innerfade driver in templates</a><a class="toplink" href="#">Back to top</a></h4>
+							
+							<p>To use the innerfade driver in templates follow the instructions <a href="usage-template">here</a>. Then just call the plugin in the template:</p>
+							
+							<pre class="brush: php">
+&lt;?php echo pictures('galleryname', 'innerfade', TRUE); ?&gt;
+							</pre>
+							
+							<p>Missing is only some styling depending on your template.</p>
+							
+						<h3><a name="usage-empty-galleries">Empty galleries</a><a class="toplink" href="#">Back to top</a></h3>
+			
+							<p>Depending on the used driver and the styling (CSS) empty galleries are handled differently:</p>
+							
+							<ul>
+								<li><b>list</b>: An empty ul will be added to the DOM, although the gallery is empty. Depending on styling (margin, padding) this could bedisplayed differently.</li>
+								<li><b>table</b>: An empty table will be added.</li>
+								<li><b>coinslider</b>: Coinslider will be rendered fully, so with navigaiton etc., but without any images.</li>
+								<li><b>bxslider</b>: Bxslider will not be rendered fully. An empty ul will be added to DOM but should not be visible.</li>
+								<li><b>innerfade</b>: Innerfade will render an empty div and an empty ul which should not be visible.</li>
+							</ul>
+							
+						<h3><a name="usage-thumbnails">Thumbnails</a><a class="toplink" href="#">Back to top</a></h3>
+					
+							<p>Thumbnails will be generated on the fly. So after uplaoding a fresh set of images the first time the frontend output of the plugin is loaded the thumbnails will be generated using the specified thumbnail widht of the gallery.</p>
+							
+							<p>After changing the thumbnail width in the gallery configuration do not forget refreshing the thumbnails of the gallery.</p>
+								
+							<p><b>Why my thumbnails have not changed after changing the thumbnail width?</b></p>
+							
+							<p>Some browsers cache the images of the galleries. So after changing the thumbnail width try to reload the plugin's output using F5 / Strg+R (reload page) or Strg+F5 / Strg+Shift+R (reload page overwriting the cache). These shortcuts my differ from browser to browser.</p>
+								
+							<p>Shortcut tables:</p>
+								
+							<ul>
+								<li><b>Firefox</b>: <a href="http://support.mozilla.org/en-US/kb/Keyboard%20shortcuts"></a></li>
+								<li><b>Safari</b>: <a href="http://docs.info.apple.com/article.html?artnum=42951"></a></li>
+								<li><b>Internet Explorer</b>: <a href="http://support.microsoft.com/kb/306832"></a></li>
+								<li><b>Chrome</b>: <a href="support.google.com/chrome/bin/answer.py?&answer=157179"></a></li>
+								<li><b>Opera</b>: <a href="http://help.opera.com/Linux/9.52/en/keyboard.html"></a></li>
+							</ul>
+							
+					<h2><a name="backend">Backend</a><a class="toplink" href="#">Back to top</a></h2>
+					
+						<p>Select the plugin in your CMSimple backend. You will see some information about the plugin:</p>
+						<img src="pictures-info.png" alt="Pictures information of installed version." />
+						
+						<p>Click "Manage galleries" in the toolbar.</p>
+						
+						<p>The first thing to do is to create a gallery.</p>
+						<img src="pictures-first-gallery.png" alt="Create the first gallery." />
+						
+						<h3><a name="backend-galleries">Galleries</a><a class="toplink" href="#">Back to top</a></h3>
+						
+							<p>There are following options for managing the galleries:</p>
+							
+							<ul>
+								<li>Create a new gallery</li>
+								<li>Gallery settings</li>
+								<li>Refresh thumbnails</li>
+								<li>Delete gallery</li>
+							</ul>
+							
+							<img src="pictures-list.png" alt="Options for managing galleries." />
+							
+							<h4><a name="backend-galleries-new">New gallery</a><a class="toplink" href="#">Back to top</a></h4>
+						
+								<p class="notice">It is recommended to use a name without any whitespace or special characters. The gallery name is used as folder name, so use only valid names for folders.</p>
+						
+								<p>Click the button for a new gallery seen above. The form is the same as for creating the first gallery.</p>
+						
+								<img src="pictures-created-gallery.png" alt="Successfully created gallery." />
+						
+							<h4><a name="backend-galleries-settings">Gallery settings</a><a class="toplink" href="#">Back to top</a></h4>
+						
+								<p>Each gallery has its own settings concerning the different drivers. Click the settings buttonto edit them:</p>
+								
+								<table summary="Settings button.">
+									<tr>
+										<td><img src="../images/gallery/settings.png" alt="Settings button." /></td>
+										<td>Settings button.</td>
+									</tr>
+								</table>
+								
+								<img src="pictures-settings.png" alt="Gallery settings." />
+								
+								<p>After saving them:</p>
+								
+								<img src="pictures-saved-settings.png" alt="Saved settings." />
+								
+								<p class="notice">Do not forget to refresh the thumbnails after editing the thumbnail width of a gallery.</p>
+								
+							<h4><a name="backend-galleries-regenerate">Regenerate thumbnails</a><a class="toplink" href="#">Back to top</a></h4>
+								
+								<p>To regenerate the thumbnails of the selected gallery press the appropriate button. A message will be shown that the thumbnails have been regenerated:</p>
+								
+								<table summary="Regenerate thumbnail button.">
+									<tr>
+										<td><img src="../images/gallery/regenerate.png" alt="Regenerate thumbnails button." /></td>
+										<td>Regenerate thumbnails button.</td>
+									</tr>
+								</table>
+								
+								<img src="pictures-regenerated.png" alt="Refreshed thumbnails." />
+								
+							<h4><a name="backend-galleries-delete">Delete gallery</a><a class="toplink" href="#">Back to top</a></h4>
+						
+								<p>To delete the selected gallery use the delete button. You will be asked if you are sure you want to delete the gallery with all its images:</p>
+								
+								<table summary="Delete gallery button.">
+									<tr>
+										<td><img src="../images/gallery/delete.png" alt="Delete gallery button." /></td>
+										<td>Delete gallery button.</td>
+									</tr>
+								</table>
+								
+								<img src="pictures-delete-gallery.png" alt="Delete gallery." />
+								
+								<p>Press "I'm sure." and the gallery will be removed.</p>
+								
+								<img src="pictures-deleted-gallery.png" alt="Gallery deleted." />
+						
+						<h3><a name="backend-images">Images</a><a class="toplink" href="#">Back to top</a></h3>
+						
+							<p>There are following options for managing the images of a gallery:</p>
+							
+							<ul>
+								<li>Upload a new image</li>
+								<li>Thumbnail preview</li>
+								<li>Delete a image</li>
+							</ul>
+							
+							<h4><a name="backend-images-add">Add image</a><a class="toplink" href="#">Back to top</a></h4>
+						
+								<p>Adding images can be done by using the plugin's interface to upload new files or by using CMSimple's filebrowser.</p>
+						
+								<h5><a name="backend-images-add-filebrowser">Using filebrowser</a></h5>
+						
+									<p>There are several filebrowser avaiable for CMSimple. Using one of the filebrowser oyu can simply upload the image to the appropriate gallery folder in your images folder. The gallery folder is named like the gallery.</p>
+						
+								<h5><a name="backend-images-add-plugin">Using plugin</a></h5>
+						
+									<p>To add a new image using the plugin's interface click the following button:</p>
+							
+									<table summary="Add image button.">
+										<tr>
+											<td><img src="../images/image/add.png" alt="Add image button." /></td>
+											<td>Add image button.</td>
+										</tr>
+									</table>
+							
+									<img src="pictures-list.png" alt="Options for managing galleries." />
+									
+									<p>A form will open and you can select a file for upload. The plugin will check for the correct image type.</p>
+									
+									<img src="pictures-uploaded-image.png" alt="Uploaded image." />
+								
+							<h4><a name="backend-images-preview">Thumbnail preview</a><a class="toplink" href="#">Back to top</a></h4>
+						
+								<p>To get a preview of the generated thumbnail click the following button:</p>
+						
+								<table summary="Image preview button.">
+									<tr>
+										<td><img src="../images/image/preview.png" alt="Image preview button." /></td>
+										<td>Image preview button.</td>
+									</tr>
+								</table>
+						
+								<img src="pictures-preview.png" alt="Thumbnail preview." />
+								
+							<h4><a name="backend-images-delete;">Delete image</a><a class="toplink" href="#">Back to top</a></h4>
+						
+								<p>To delete an image click the delete button. You will get asked if you are sure you want to delete the image:</p>
+						
+								<table summary="Delete image button.">
+									<tr>
+										<td><img src="../images/image/delete.png" alt="Delete image button." /></td>
+										<td>Delete image button.</td>
+									</tr>
+								</table>
+						
+								<img src="pictures-delete-image.png" alt="Delete the image." />
+						
+								<p>A message will be shown that the image was successfully deleted.</p>
+						
+								<img src="pictures-deleted-image.png" alt="Deleted the image." />
+						
+					<h2><a name="custom-styling">Custom styling</a><a class="toplink" href="#">Back to top</a></h2>
+					
+						<p>Custom styling can either be sdone in the templates stylesheet or by modifying the plugin's stylesheet. The plugin's stylesheet is located in plugins/pictures/css. Delete the frontend part in the stylesheet of the plugin if you want to do custom styling in the template's stylesheet.</p>
+						
+						<p>The frontend part of the stylesheet looks like this:</p>
+						
+						<pre class="brush: css">
+/* Pictures frontend div. */
+.pictures-frontent {
+	
+}
+
+/* Table driver. */
+.pictures-frontend .pictures-table-driver td{
+	padding: 5px;
+}
+
+.pictures-frontend .pictures-table-driver td a img{
+	padding: 4px;
+	border: 1px solid #777777;
+}
+
+.pictures-frontend .pictures-table-driver td a img:hover {
+	
+}
+
+/* List driver. */
+.pictures-frontend .pictures-list-driver {
+	
+}
+
+/* Coinslider driver. */
+.pictures-frontend .pictures-coinslider-driver {
+	margin: auto;
+}
+
+.pictures-frontend .pictures-coinslider-driver a{
+	
+}
+
+/* Bxslider driver. */
+/* Important: No marign and padding on bxslider ul and li. */
+.pictures-frontend .pictures-bxslider-driver {
+	
+}
+
+/* Main window containing the ul (not the controls and pager). */
+.pictures-frontend .pictures-bxslider-driver .bx-window {
+	
+}
+
+/* Main li. */
+.pictures-frontend .pictures-bxslider-driver .bx-window li {
+	
+}
+
+/* Previous control. */
+.pictures-frontend .pictures-bxslider-driver .bx-prev {
+	float: left;
+	position: absolute;
+	left: -40px;
+	top: 60px;
+}
+
+/* Next control. */
+.pictures-frontend .pictures-bxslider-driver .bx-next {
+	float: right;
+	position: absolute;
+	right: -40px;
+	top: 60px;
+}
+
+/* Pager div. */
+.pictures-frontend .pictures-bxslider-driver .bx-pager {
+	margin: .5em auto;
+	text-align: center;
+}
+
+/* Anchors of the pager. */
+.pictures-frontend .pictures-bxslider-driver .bx-pager .pager-link {
+	margin: .5em;
+}
+
+/* Active pager link. */
+.pictures-frontend .pictures-bxslider-driver .bx-pager .pager-active {
+	
+}
+
+/* Auto controls. */
+.pictures-frontend .pictures-bxslider-driver .bx-auto {
+	
+}
+
+/* The start control anchor. */
+/* Additionally the anchor has the class "start" or "stop" dependant on the current state. */
+.pictures-frontend .pictures-bxslider-driver .bx-auto .bx-start {
+	
+}
+
+/* Bxslider 4 driver. */
+/* Main div containing the slider. */
+.pictures-frontend .pictures-bxslider4-driver {
+	
+}
+
+/* Controls for navigation. */
+.pictures-frontend .pictures-bxslider4-driver-controls {
+	
+}
+
+/* Innerfade driver. */
+/* This is the ul element containing the images. */
+.picutres-frontend .pictures-innerfade-driver {
+	height: 500px;
+}
+
+.pictures-frontend .pictures-innerfade-driver li {
+	
+}
+								</pre>
+						
+						<p>Classes:</p>
+						
+						<ul>
+							<li><b>pictures-frontend</b>: The div around the plugin independant of the sued driver.</li>
+							<li><b>pictures-table-driver</b>: The table used of the table driver.</li>
+							<li><b>pictures-list-driver</b>: The unordered list used for the list driver.</li>
+							<li><b>pictures-coinslider-driver</b>: The div around the coinslider.</li>
+							<li><b>pictures-bxslider-driver</b>: The div around the bxslider.</li>
+							<li><b>bx-window</b>: Div containing the main ul of the slider.</li>
+							<li><b>bx-prev</b>: The previous control.</li>
+							<li><b>bx-next</b>: The next control.</li>
+							<li><b>bx-pager</b>: The pager navigation div.</li>
+							<li><b>pager-link</b>: A link of the pager navigation.</li>
+							<li><b>pager-active</b>: The pager navigaiton link currently active.</li>
+							<li><b>bx-auto</b>: The div with the auto controls.</li>
+							<li><b>bx-start</b>: The start control (anchor). Additionally there are the classes <b>start</b> and <b>stop</b> dependant on the current state.</li>
+						</ul>
+					
+					<h2><a name="icons">Icons</a><a class="toplink" href="#">Back to top</a></h2>
+						
+						<p>All icons used in the backend of this plugin are part of the spirit20 icons set (licensed under GPL). See <a href="http://19eighty7.com/icons">here</a> For the complete set. Thanks to Dale Morrell for this great set of icons!</p>
+					
+						<p>The icons included for the bxslider driver are part of the iconic icon set. See <a href="http://somerandomdude.com/work/iconic/">here</a>.</p>
+					
+					<h2><a name="notes">Notes</a><a class="toplink" href="#">Back to top</a></h2>
+					
+						<p>If you are using the plugin: Support the development by making bug reports and giving ideas how to improve the plugin.</p>
+						<p>As platform you can use the SourceForge project's page: <a href="http://sourceforge.net/projects/cmsimplepctrs/">SourceForge project</a></p>
+						
+						<p>David Stutz<br />
+						davidstutz@web.de</p>
+					
+					<h2><a name="changelog">Changelog</a><a class="toplink" href="#">Back to top</a></h2>
+				
+					<h3><a name="changelog-1-3">Version 1.0.0 Beta</a><a class="toplink" href="#">Back to top</a></h3>
+				
+                        <p><b>Beta 14.</b></p>
+						<ul>
+							<li>Update to support CMSimple XH 1.6.x.</li>
+						</ul>
+                    
+						<p><b>Beta 13.</b></p>
+						<ul>
+							<li>Fixed <code>version.nfo</code>.</li>
+							<li>Added sorting of the galleries.</li>
+						</ul>
+				
+						<p><b>Beta 12.</b></p>
+						<ul>
+							<li>Added bxslider version 4 driver for basic carousels (for now only with minimal configuration options).</li>
+							<li>Updated the documentation accordingly to the new driver.</li>
+							<li>Fixed some issues concerning the thumbnail generation.</li>
+							<li>Added <code>version.nfo</code>.</li>
+						</ul>
+						
+						<p><b>Beta 11.</b></p>
+						<ul>
+							<li>Added configuration options to change the text displayed as next and previous button using the coinslider driver. This change required some changes on the coinslider JS.</li>
+							<li>Updated documentation.</li>
+						</ul>
+				
+						<p><b>Beta 10.</b></p>
+						<ul>
+							<li>Added support for upper case extensions like PNG, JPEG, JPG or GIF.</li>
+							<li>Added configuration option <b>images_thumbnail_extension</b> defining the extension of the generated thumbnails. Currently supported options are 'jpeg' and 'png'.</li>
+							<li>Added configuration option <b>images_sort_function</b> defining the function to be used for sorting the images. Natively supported are 'pictures_sort_asc' and 'pictures_sort_desc'. To write your own custom sort functions see <a href="#configuration-sort-function">here</a>.</li>
+						</ul>
+				
+						<p><b>Beta 9.</b></p>
+						<ul>
+							<li>Updated documentation and added documentation for the innerfade driver.</li>
+							<li>Fixed bug described here: <a href="http://cmsimpleforum.com/viewtopic.php?f=5&t=5953#p34683">http://cmsimpleforum.com/viewtopic.php?f=5&t=5953#p34683</a>. Again, thanks to Christoph!</li>
+						</ul>
+				
+						<p><b>Beta 8.</b></p>
+						<ul>
+							<li>Fixed bug described here: <a href="http://cmsimpleforum.com/viewtopic.php?f=12&t=4517&start=20#p34489">http://cmsimpleforum.com/viewtopic.php?f=12&t=4517&start=20#p34489</a>. Thanks to Christoph!</li>
+						</ul>
+						
+						<p><b>Beta 7.</b></p>
+						<ul>
+							<li>Removed some minor issues with the lightbox configuration for the bxslider driver.</li>
+						</ul>
+						
+						<p><b>Up to beta 6.</b></p>
+						
+						<ul>
+							<li>Added bxslider_original configuration key determining whether to use the original images instead of the thumbnails in the slider.</li>
+							<li>Added images_thumbnail_compression configuration key to define compression of thumbnails.</li>
+						</ul>
+					
+					<h2><a name="license">License</a><a class="toplink" href="#">Back to top</a></h2>
+					
+						<h3><a name="license-plugin">The plugin's license</a><a class="toplink" href="#">Back to top</a></h3>
+							
+							<p>Copyright 2012, 2013 David Stutz</p>
+							
+							<p>The plugin is published under the GNU Public License Version 3. For more information see: <a href="http://www.gnu.org/licenses/" target="_blank">GNU Licenses</a></p>
+						
+							<p>The plugin is free software: you can redistribute it and/or modify it under the terms of the GNU General Public License as published by the Free Software Foundation, either version 3 of the License, or (at your option) any later version.</p>
+						
+							<p>The plugin is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the GNU General Public License for more details.</p>
+							
+						<h3><a name="license-jQuery">jQuery</a><a class="toplink" href="#">Back to top</a></h3>
+						
+							<p>See <a href="http://jQuery.org/license/" target="_blank">here</a> for license information.</p>
+							
+						<h3><a name="license-coinslider">Coinslider</a><a class="toplink" href="#">Back to top</a></h3>
+						
+							<p>A slightly modified version is used for the plugin.</p>
+						
+							<p>See <a href="http://workshop.rs/projects/coin-slider/" target="_blank">here</a> for license information.	</p>
+							
+						<h3><a name="license-coinslider">Bxslider</a><a class="toplink" href="#">Back to top</a></h3>
+						
+							<p>See <a href="http://github.com/wandoledzep/bxslider" target="_blank">here</a> for license information.</p>		
+						
+						<h3><a name="license-lightbox">Lightbox</a><a class="toplink" href="#">Back to top</a></h3>
+						
+							<p>See <a href="http://leandrovieira.com/projects/jQuery/lightbox/" target="_blank">here</a> for license information.	</p>	
+							
+						<h3><a name="license-shutter">Shutter reloaded</a><a class="toplink" href="#">Back to top</a></h3>
+						
+							<p>A slightly modified version is used for the plugin.</p>
+						
+							<p>See <a href="http://www.laptoptips.ca/javascripts/shutter-reloaded/" target="_blank">here</a> for license information.</p>	
+						
+						<h3><a name="license-prettyphoto">prettyPhoto</a><a class="toplink" href="#">Back to top</a></h3>
+						
+							<p>See <a href="http://www.no-margin-for-errors.com/projects/prettyphoto-jquery-lightbox-clone/" target="_blank">here</a> for license information.</p>
+
+		</div>
+		<script type="text/javascript">
+		     SyntaxHighlighter.all()
+		</script>
+	</body>
+</html>

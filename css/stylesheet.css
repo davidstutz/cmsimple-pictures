@@ -1,0 +1,218 @@
+/**
+ * @file css/stylesheet.css
+ * @brief Cotnaining backend and frontend style
+ *
+ * Pictures plugin css/stylesheet.css
+ * 
+ * @author David Stutz
+ * @license GPLv3
+ * @package pictures
+ * @see http://sourceforge.net/projects/cmsimplepctrs/
+ * 
+ *  This file is part of the pictures plugin for CMSimple.
+ *
+ *  The plugin is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, either version 3 of the License, or
+ *  (at your option) any later version.
+ *
+ *  The plugin is distributed in the hope that it will be useful,
+ *  but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *  MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+ *  GNU General Public License for more details.
+ *
+ *  @see <http://www.gnu.org/licenses/>.
+ */
+ /*
+ * Frontend style.
+ */
+/* Pictures frontend div. */
+.pictures-frontent {
+	
+}
+
+/* Table driver. */
+.pictures-frontend .pictures-table-driver td{
+	padding: 5px;
+}
+
+.pictures-frontend .pictures-table-driver td a img{
+	padding: 4px;
+	border: 1px solid #777777;
+}
+
+.pictures-frontend .pictures-table-driver td a img:hover {
+	
+}
+
+/* List driver. */
+.pictures-frontend .pictures-list-driver {
+	
+}
+
+/* Coinslider driver. */
+.pictures-frontend .pictures-coinslider-driver {
+	margin: auto;
+}
+
+.pictures-frontend .pictures-coinslider-driver a{
+	
+}
+
+/* Bxslider driver. */
+/* Important: No marign and padding on bxslider ul and li. */
+.pictures-frontend .pictures-bxslider-driver {
+	
+}
+
+/* Main window containing the ul (not the controls and pager). */
+.pictures-frontend .pictures-bxslider-driver .bx-window {
+	
+}
+
+/* Main li. */
+.pictures-frontend .pictures-bxslider-driver .bx-window li {
+	
+}
+
+/* Previous control. */
+.pictures-frontend .pictures-bxslider-driver .bx-prev {
+	float: left;
+	position: absolute;
+	left: -40px;
+	top: 60px;
+}
+
+/* Next control. */
+.pictures-frontend .pictures-bxslider-driver .bx-next {
+	float: right;
+	position: absolute;
+	right: -40px;
+	top: 60px;
+}
+
+/* Pager div. */
+.pictures-frontend .pictures-bxslider-driver .bx-pager {
+	margin: .5em auto;
+	text-align: center;
+}
+
+/* Anchors of the pager. */
+.pictures-frontend .pictures-bxslider-driver .bx-pager .pager-link {
+	margin: .5em;
+}
+
+/* Active pager link. */
+.pictures-frontend .pictures-bxslider-driver .bx-pager .pager-active {
+	
+}
+
+/* Auto controls. */
+.pictures-frontend .pictures-bxslider-driver .bx-auto {
+	
+}
+
+/* The start control anchor. */
+/* Additionally the anchor has the class "start" or "stop" dependant on the current state. */
+.pictures-frontend .pictures-bxslider-driver .bx-auto .bx-start {
+	
+}
+
+/* Bxslider 4 driver. */
+/* Main div containing the slider. */
+.pictures-frontend .pictures-bxslider4-driver {
+	
+}
+
+/* Controls for navigation. */
+.pictures-frontend .pictures-bxslider4-driver-controls {
+	
+}
+
+/* Innerfade driver. */
+/* This is the ul element containing the images. */
+.picutres-frontend .pictures-innerfade-driver {
+	height: 500px;
+}
+
+.pictures-frontend .pictures-innerfade-driver li {
+	
+}
+
+/*
+ * Backend style.
+ * No changes needed.
+ */
+
+.pictures-head {
+	margin-bottom: .5em;
+}
+.pictures-table {
+	width: 100%;
+}
+.pictures-preview img {
+	margin: 1em auto;
+}
+.pictures-submit {
+	cursor: pointer;
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #ededed), color-stop(1, #dfdfdf) );
+	background:-moz-linear-gradient( center top, #ededed 5%, #dfdfdf 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#ededed', endColorstr='#dfdfdf');
+	background-color:#ededed;
+	border:1px solid #dcdcdc;
+	display:inline-block;
+	color:#777777;
+	font-family:arial;
+	font-size:15px;
+	font-weight:bold;
+	padding:6px 24px !important;
+	height:32px !important;
+	text-decoration:none;
+	text-shadow:1px 1px 0px #ffffff;
+}
+.pictures-submit:hover {
+	background:-webkit-gradient( linear, left top, left bottom, color-stop(0.05, #dfdfdf), color-stop(1, #ededed) );
+	background:-moz-linear-gradient( center top, #dfdfdf 5%, #ededed 100% );
+	filter:progid:DXImageTransform.Microsoft.gradient(startColorstr='#dfdfdf', endColorstr='#ededed');
+	background-color:#dfdfdf;
+}
+.pictures-submit:active {
+	position:relative;
+	top:1px;
+}
+.pictures-textarea {
+	font-size: 80%;
+}
+.pictures-error, .pictures-success, .pictures-help, .pictures-notice {
+	padding: .8em .8em .8em 2.6em;
+	margin-top: .5em;
+	margin-bottom: .5em;
+	border: 2px solid #ddd;
+}
+.pictures-error {
+	color:#8a1f11;
+	border-color:#FBC2C4;
+	background: #FBE3E4 url('../images/error.png') scroll no-repeat .8em .8em;
+}
+.pictures-success {
+	color:#264409;
+	border-color:#C6D880;
+	background: #E6EFC2 url('../images/success.png') scroll no-repeat .8em .8em;
+}
+.pictures-help {
+	color: #3E6DB1;
+	border-color: #3E6DB1;
+	background: #BDCDE3 url('../images/help.png') scroll no-repeat .8em .8em;
+}
+.pictures-notice {
+	background:#FFF6BF;
+	color:#514721;
+	border-color:#FFD324;
+}
+.pictures-help-icon {
+	
+}
+.pictures-select {
+	width: 30%;
+	min-width: 80px;
+}

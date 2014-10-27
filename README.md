@@ -19,6 +19,8 @@ Requires PHP 5 or higher.
 
 **Recommended: [CMSimple XH](http://www.cmsimple-xh.org/) 1.5 or higher!**
 
+**Recommended: CMSimple jQuery Plugin** (included in CMSimple XH download, see [here](http://www.cmsimple-xh.org/?CMSimple_XH:Plugins)).
+
 Supports [Hi_updatecheck](http://cmsimple.holgerirmler.de/en/?Plugins:UpdateCheck).
 
 Also tested on:

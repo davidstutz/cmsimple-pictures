@@ -58,6 +58,7 @@ if (isset($pictures))
 				. 'Released: ' . Pictures::release_date() . '<br />'
 				. 'Author: ' . Pictures::author() . '<br />'
 				. 'Website: ' . Pictures::website() . '<br />'
+                                . 'GitHub Repository/Releases: ' . Pictures::github() . '<br />'
 				. Pictures::description() . '<br />'
 				. Pictures::legal() . '<br />'
 				. '</div>';

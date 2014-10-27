@@ -98,7 +98,7 @@ class Pictures {
 	 *
 	 * Version.
 	 */
-	const VERSION = '1.0.0';
+	const VERSION = '1.0.1';
 	
 	/**
 	 * @public
@@ -190,7 +190,7 @@ class Pictures {
 	 */
 	public static function release_date() 
 	{
-	   return "18th October 2014";
+	   return "27th October 2014";
 	}
 	
 	/**
@@ -214,9 +214,21 @@ class Pictures {
 	 */
 	public static function website()
 	{
-		return '<a target="_blank" href="http://davidstutz.de/cmsimple/?Pictures" target="_blank">Project Webpage</a>, <a target="_blank" href="http://davidstutz.de/cmsimple/?Pictures">Project Page</a>';
+		return '<a target="_blank" href="http://davidstutz.de/cmsimple/?Pictures" target="_blank">Project Webpage</a>';
 	}
 	
+        /**
+         * @public
+         * @static
+         * Get plugin's GitHub repo.
+         * 
+         * @return <string> GitHub link
+         */
+        public static function github()
+        {
+		return '<a target="_blank" href="https://github.com/davidstutz/cmsimple-pictures" target="_blank">GitHub Project</a>';
+        }
+        
 	/**
 	 * @public
 	 * @static

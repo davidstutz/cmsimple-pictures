@@ -173,8 +173,14 @@ class Pictures_Image {
 			$height = imagesy($image);
 			$new_height = round(($height * ($new_width / $width)), 0);
 			$thumbnail = imagecreatetruecolor($new_width, $new_height);
-			imagecopyresized($thumbnail, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
-			
+            
+            if (strtolower(Pictures::$cf['images_thumbnail_function']) == 'imagecopyresampled') {
+                imagecopyresampled($thumbnail, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
+            }
+			else {
+                imagecopyresized($thumbnail, $image, 0, 0, 0, 0, $new_width, $new_height, $width, $height);
+            }
+            
 			if (strtolower(Pictures::$cf['images_thumbnail_extension']) == 'jpeg' OR strtolower(Pictures::$cf['images_thumbnail_extension']) == 'jpg')
 			{
 				imagejpeg($thumbnail, $this->_thumb, Pictures::thumbnail_compression());

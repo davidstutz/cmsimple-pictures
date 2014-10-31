@@ -94,8 +94,9 @@
 	$plugin_tx["pictures"]["cf_csv_delimiter"]="Delimiter between cells in all CSV files. Single ASCII character.";
 	$plugin_tx["pictures"]["cf_csv_enclosure"]="The enclosure used in the CSV files. Single ASCII character.";
 	$plugin_tx["pictures"]["cf_images_thumbnail_width"]="Width of created thumbnails of a gallery. Unsigned integer.";
-    $plugin_tx["pictures"]["cf_images_compression"]="Define the compression rate for the thumbnails. For images_thumbnail_extension set to 'png' choose an integer betwwen 0 and 10 with 0 for no compression and 10 for highest compression. With <b>images_thumbnail_extension</b> set to 'jpeg' choose an integer between 0 and 100 with 0 for the lowest quality (highest compression) and 100 for the highest quality (no compression). Default for 'jpeg' would be 75.";
-	$plugin_tx["pictures"]["cf_images_extension"]="The extension used for thumbnails. Currently only 'png' and 'jpeg' are supported. Note that depending on the chosen extension the compression rate need to be adjusted.";
+    $plugin_tx["pictures"]["cf_images_thumbnail_function"]="The function used to resize the original images to thumbnail size: 'imagecopyresampled' oder 'imagecopyresized'.";
+    $plugin_tx["pictures"]["cf_images_thumbnail_compression"]="Define the compression rate for the thumbnails. For images_thumbnail_extension set to 'png' choose an integer betwwen 0 and 10 with 0 for no compression and 10 for highest compression. With <b>images_thumbnail_extension</b> set to 'jpeg' choose an integer between 0 and 100 with 0 for the lowest quality (highest compression) and 100 for the highest quality (no compression). Default for 'jpeg' would be 75.";
+	$plugin_tx["pictures"]["cf_images_thumbnail_extension"]="The extension used for thumbnails. Currently only 'png' and 'jpeg' are supported. Note that depending on the chosen extension the compression rate need to be adjusted.";
     $plugin_tx["pictures"]["cf_images_sort_function"]="The function used for sorting the images. Currently supported: 'pictures_sort_asc', 'pictures_sort_desc'.";
     $plugin_tx["pictures"]["cf_galleries_sort_function"]="The function used for sorting the galleries. Currently supported: 'pictures_galleries_sort_asc', 'pictures_galleries_sort_desc'.";
 	$plugin_tx["pictures"]["cf_table_columns"]="Number of columns for table dirver. Unsigned integer.";

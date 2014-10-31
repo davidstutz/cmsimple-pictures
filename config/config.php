@@ -48,6 +48,11 @@
 	 * @var
 	 */
 	$plugin_cf["pictures"]["images_thumbnail_width"] = "300";
+    /**
+     * Thumbnail function used for generation: 'imagecopyresampled' or 'imagecopyresized'.
+     * @var
+     */
+    $plugin_cf["pictures"]["images_thumbnail_function"] = "imagecopyresampled";
 	/**
 	 * Extension type for created thumbnails.
 	 * @var

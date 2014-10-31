@@ -4,7 +4,7 @@ CMSimple Pictures is a CMSimple plugin for creating sliders and galleries.
 
 Project page: [http://davidstutz.de/cmsimple/?Pictures](http://davidstutz.de/cmsimple/?Pictures).
 
-Documentation: [http://davidstutz.de/cmsimple/plugins/pictures/help/help_en.htm](http://davidstutz.de/cmsimple/plugins/pictures/help/help_en.htm).
+Documentation: [http://davidstutz.github.io/cmsimple-pictures/help/help_en.htm](http://davidstutz.github.io/cmsimple-pictures/help/help_en.htm).
 
 **Outdated** Sourceforge project: [https://sourceforge.net/projects/cmsimplepctrs](https://sourceforge.net/projects/cmsimplepctrs).
 
@@ -29,6 +29,10 @@ Also tested on:
 * CMSimple Realblog 1.5 or higher.
 
 ## Changelog
+
+### 1.0.2
+
+* Added configuration option `images_thumbnail_function` to increase thumbnail quality.
 
 ### 1.0.1
 

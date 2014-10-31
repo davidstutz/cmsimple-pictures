@@ -98,7 +98,7 @@ class Pictures {
 	 *
 	 * Version.
 	 */
-	const VERSION = '1.0.1';
+	const VERSION = '1.0.2';
 	
 	/**
 	 * @public
@@ -190,7 +190,7 @@ class Pictures {
 	 */
 	public static function release_date() 
 	{
-	   return "27th October 2014";
+	   return "31th October 2014";
 	}
 	
 	/**

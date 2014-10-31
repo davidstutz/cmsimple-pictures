@@ -188,8 +188,8 @@
 								<li><a href="#usage-examples-bxslider">Bxslider driver</a></li>
 								<li><a href="#usage-examples-bxslider4">Bxslider4 driver</a></li>
 								<li><a href="#usage-examples-bxslider-template">Bxslider driver in templates</a></li>
-								<li><a href="#usage-examples-innerfade">Innfade driver</a></li>
-								<li><a href="#usage-examples-innerfade-template">Innfade driver in templates</a></li>
+								<li><a href="#usage-examples-innerfade">Innerfade driver</a></li>
+								<li><a href="#usage-examples-innerfade-template">Innerfade driver in templates</a></li>
 							</ol>
 						</li>
 						<li><a href="#usage-empty-galleries">Empty galleries</a></li>
@@ -360,6 +360,7 @@ $cf['plugins']['folder'] = "plugins";
 							<li><b>csv_filepath</b>: The path where to store the CSV files for gallery configuration, relative to CMSimple root.</li>
 							<li><b>csv_delimiter</b>: The delimiter used between cells in all CSV files.</li>
 							<li><b>folder_images</b>: The subfolder created in the CMSimple images folder to hold all galleries.</li>
+                            <li><b>images_thumbnail_function</b>: The function used to resize the original images to thumbnail size: 'imagecopyresampled' or 'imagecopyresized'.</li>
 							<li><b>images_thumbnail_compression</b>: Define the compression rate for the thumbnails. For <b>images_thumbnail_extension</b> set to 'png' choose an integer betwwen 0 and 10 with 0 for no compression and 10 for highest compression. With <b>images_thumbnail_extension</b> set to 'jpeg' choose an integer between 0 and 100 with 0 for the lowest quality (highest compression) and 100 for the highest quality (no compression). Default for 'jpeg' would be 75.</li>
 							<li><b>images_thumbnail_extension</b>: The extension used for thumbnails. Currently only 'png' and 'jpeg' are supported. Note that depending on the chosen extension the compression rate need to be adjusted.</li>
 							<li><b>images_sort_function</b>: The function used for sorting the images. Currently supported: 'pictures_sort_asc', 'pictures_sort_desc'. To implement your own see <a href="#configuration-sort-function">here</a>.</li>
@@ -1531,15 +1532,21 @@ $plugin_cf["pictures"]["innerfade_template"] = "true";
 				
 					<h3><a name="changelog-1-0">Version 1.0</a><a class="toplink" href="#">Back to top</a></h3>
 				
-                                            <h4>Version 1.0.1</h4>
+                        <h4>Version 1.0.2</h4>
+                    
+                        <ul>
+                            <li>Added configuration option <code>images_thumbnail_function</code> to increase thumbnail quality.</li>
+                        </ul>
+                        
+                        <h4>Version 1.0.1</h4>
                                         
-                                                <ul>
+                        <ul>
 							<li>Minor fixes, additional tests for CMSimple XH 1.6.4.</li>
 						</ul>
                                             
-                                            <h4>Version 1.0.0</h4>
+                        <h4>Version 1.0.0</h4>
                                         
-                                                <p><b>Beta 14.</b></p>
+                        <p><b>Beta 14.</b></p>
 						<ul>
 							<li>Update to support CMSimple XH 1.6.x.</li>
 						</ul>

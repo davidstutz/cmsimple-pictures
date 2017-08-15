@@ -2,6 +2,8 @@
 
 CMSimple Pictures is a CMSimple plugin for creating sliders and galleries.
 
+**For using this Plugin with the latest CMSimple XH version, a minor update is necessary, see [here](https://cmsimpleforum.com/viewtopic.php?f=16&t=12904#p61121).**
+
 Project page: [http://davidstutz.de/cmsimple/?Pictures](http://davidstutz.de/cmsimple/?Pictures).
 
 Documentation: [http://davidstutz.github.io/cmsimple-pictures/help/help_en.htm](http://davidstutz.github.io/cmsimple-pictures/help/help_en.htm).

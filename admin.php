@@ -11,7 +11,7 @@
  * @package pictures
  * @see http://sourceforge.net/projects/cmsimplepctrs/
  * 
- *  Copyright 2012 - 2014 David Stutz
+ *  Copyright 2012 - 2018 David Stutz
  * 
  * 	This file is part of the pictures plugin for CMSimple.
  *
@@ -27,16 +27,19 @@
  *
  *  @see <http://www.gnu.org/licenses/>.
  */
-
-if (!defined('CMSIMPLE_XH_VERSION')) {
-    header('HTTP/1.0 403 Forbidden');
-    exit;
-}
  
+/*
+ * Register the plugin menu items.
+ */
+if (function_exists('XH_registerStandardPluginMenuItems')) {
+    XH_registerStandardPluginMenuItems(false);
+}
+
+
 /* Require classes. */
 if (!class_exists('Pictures', FALSE)) require_once dirname(__FILE__) . '/pictures.php';
 
-if (isset($pictures))
+if (isset($pictures) OR isset($_GET['pictures']))
 {
 	/* Make CMSimple global saccessable. */
 	global $sn;

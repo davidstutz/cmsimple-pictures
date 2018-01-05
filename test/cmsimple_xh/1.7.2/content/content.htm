@@ -1,0 +1,276 @@
+<html><head><title>Content file</title>
+<?php
+$page_data_fields=array('keywords','title','robots','template','published','show_last_edit','linked_to_menu','header_location','use_header_location','publication_date','expires','description');
+$temp_data=array(
+'url'=>'WebLog',
+'last_edit'=>'1322055182',
+'description'=>'',
+'keywords'=>'',
+'title'=>'',
+'robots'=>'',
+'template'=>'',
+'published'=>'',
+'show_last_edit'=>'',
+'linked_to_menu'=>'1',
+'header_location'=>'',
+'use_header_location'=>''
+);
+?>
+</head><body>
+<!--XH_ml1:Start-->
+<?php
+$page_data[]=array(
+'url'=>'Start',
+'last_edit'=>'1515187346',
+'description'=>'',
+'keywords'=>'',
+'title'=>'',
+'robots'=>'',
+'template'=>'0',
+'published'=>'1',
+'show_last_edit'=>'0',
+'linked_to_menu'=>'1',
+'header_location'=>'',
+'use_header_location'=>'0',
+'publication_date'=>'',
+'expires'=>''
+);
+?>
+
+<!--XH_ml1:News-->
+<?php
+$page_data[]=array(
+'keywords'=>'',
+'title'=>'',
+'robots'=>'',
+'template'=>'',
+'published'=>'',
+'show_last_edit'=>'',
+'linked_to_menu'=>'1',
+'header_location'=>'',
+'use_header_location'=>'',
+'publication_date'=>'',
+'expires'=>'',
+'description'=>'',
+'last_edit'=>'1515188055',
+'url'=>'News'
+);
+?>
+<h1>News</h1>
+<p><strong>All plugin calls are wrapped in three opening and closing braces!</strong></p>
+<p>The basic plugin call <code>{plugin:news('news', 5);}</code> (with three opening and closing braces, as detailed in the <a target="_blank" rel="noopener">documentation</a>) generates the following list of (up to five) news entries:</p>
+<div>{{{plugin:news('news', 5);}}}</div>
+<!--XH_ml2:Newscase-->
+<?php
+$page_data[]=array(
+'keywords'=>'',
+'title'=>'',
+'robots'=>'',
+'template'=>'',
+'published'=>'',
+'show_last_edit'=>'',
+'linked_to_menu'=>'1',
+'header_location'=>'',
+'use_header_location'=>'',
+'publication_date'=>'',
+'expires'=>'',
+'description'=>'',
+'last_edit'=>'1515188192',
+'url'=>'Newscase'
+);
+?>
+<h2>Newscase</h2>
+<p>A newscase can be called using <code>{plugin:newscase('News', 'news', '-5 years');}</code>. It only shows news entries from the last five years:</p>
+<div>{{{plugin:newscase('News', 'news', '-5 years');}}}</div>
+<!--XH_ml2:Newsticker-->
+<?php
+$page_data[]=array(
+'keywords'=>'',
+'title'=>'',
+'robots'=>'',
+'template'=>'',
+'published'=>'',
+'show_last_edit'=>'',
+'linked_to_menu'=>'1',
+'header_location'=>'',
+'use_header_location'=>'',
+'publication_date'=>'',
+'expires'=>'',
+'description'=>'',
+'last_edit'=>'1515188209',
+'url'=>'Newsticker'
+);
+?>
+<h2>Newsticker</h2>
+<p>The newsticker can be called using <code>{plugin:newsticker('news', 5);}</code>:</p>
+<div>{{{plugin:newsticker('news', 5);}}}</div>
+<!--XH_ml2:Newsscroller-->
+<?php
+$page_data[]=array(
+'keywords'=>'',
+'title'=>'',
+'robots'=>'',
+'template'=>'',
+'published'=>'',
+'show_last_edit'=>'',
+'linked_to_menu'=>'1',
+'header_location'=>'',
+'use_header_location'=>'',
+'publication_date'=>'',
+'expires'=>'',
+'description'=>'',
+'last_edit'=>'1515188219',
+'url'=>'Newsscroller'
+);
+?>
+<h2>Newsscroller</h2>
+<p>The newsscroller can be called using <code>{plugin:newsscroller('news', 5);}</code>:</p>
+<div>{{{plugin:newsscroller('news', 5);}}}</div>
+<!--XH_ml2:Newsslider-->
+<?php
+$page_data[]=array(
+'keywords'=>'',
+'title'=>'',
+'robots'=>'',
+'template'=>'',
+'published'=>'',
+'show_last_edit'=>'',
+'linked_to_menu'=>'1',
+'header_location'=>'',
+'use_header_location'=>'',
+'publication_date'=>'',
+'expires'=>'',
+'description'=>'',
+'last_edit'=>'1515188230',
+'url'=>'Newsslider'
+);
+?>
+<h2>Newsslider</h2>
+<p>The newsslider can be called using <code>{plugin:newsslider('news', 5, TRUE);}</code>:</p>
+<div>{{{plugin:newsslider('news', 5, TRUE);}}}</div>
+<!--XH_ml1:Pictures-->
+<?php
+$page_data[]=array(
+'keywords'=>'',
+'title'=>'',
+'robots'=>'',
+'template'=>'',
+'published'=>'',
+'show_last_edit'=>'',
+'linked_to_menu'=>'1',
+'header_location'=>'',
+'use_header_location'=>'',
+'publication_date'=>'',
+'expires'=>'',
+'description'=>'',
+'last_edit'=>'1515194764',
+'url'=>'Pictures'
+);
+?>
+<h1>Pictures</h1>
+<p class="cmsimplecore_warning">All plugin calls are wrapped in three opening and closing braces!</p>
+<p>The pictures plugin supports a range of different gallery options including displaying images as table using <code>{PLUGIN:pictures('gallery', 'table');}</code>:</p>
+<div>{{{PLUGIN:pictures('gallery', 'table');}}}</div>
+<div> </div>
+<p>Or using bxslider, <code>{PLUGIN:pictures('gallery', 'bxslider4');}</code>:</p>
+<div>{{{PLUGIN:pictures('gallery', 'bxslider4');}}}</div>
+<p>Note that some CSS in the template is required for the bxslider to work:</p>
+<pre>.bx-wrapper {
+    position: relative;
+    margin: 0 auto 60px;
+    padding: 0;
+    *zoom: 1;
+}
+ 
+.bx-wrapper img {
+    max-width: 100%;
+    display: block;
+}
+ 
+.bx-wrapper .bx-viewport {
+    -moz-box-shadow: 0 0 5px #ccc;
+    -webkit-box-shadow: 0 0 5px #ccc;
+    box-shadow: 0 0 5px #ccc;
+    border: solid #989D9D 3px;
+    left: -5px;
+    background: #989D9D;
+}
+ 
+.bx-wrapper .bx-pager,
+.bx-wrapper .bx-controls-auto {
+    position: absolute;
+    bottom: -30px;
+    width: 100%;
+}
+ 
+.bx-wrapper .bx-prev {
+    left: -40px;
+}
+ 
+.bx-wrapper .bx-next {
+    right: -40px;
+}
+ 
+.bx-wrapper .bx-controls-direction a {
+    color: #989D9D;
+    position: absolute;
+    top: 50%;
+    margin-top: -16px;
+    outline: 0;
+    width: 21px;
+    height: 32px;
+    text-indent: -9999px;
+    z-index: 9;
+    border: none;
+    padding: 0;
+}
+ 
+.bx-wrapper .bx-controls-direction a img {
+    color: #989D9D;
+    border: none !important;
+    border-color: transparent;
+}
+ 
+.bx-wrapper .bx-controls-direction a.disabled {
+    display: none;
+}
+ 
+.bx-wrapper .bx-caption {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background: #666\9;
+    background: rgba(80, 80, 80, 0.75);
+    width: 100%;
+}
+ 
+.bx-wrapper .bx-caption span {
+    color: #fff;
+    font-family: Arial;
+    display: block;
+    font-size: .85em;
+    padding: 10px;
+}
+</pre>
+<p>Images taken from the <a href="https://www2.eecs.berkeley.edu/Research/Projects/CS/vision/bsds/" target="_blank" rel="noopener">BSDS300</a>.</p>
+<!--XH_ml1:Youtube-->
+<?php
+$page_data[]=array(
+'keywords'=>'',
+'title'=>'',
+'robots'=>'',
+'template'=>'',
+'published'=>'',
+'show_last_edit'=>'',
+'linked_to_menu'=>'1',
+'header_location'=>'',
+'use_header_location'=>'',
+'publication_date'=>'',
+'expires'=>'',
+'description'=>'',
+'last_edit'=>'1515187593',
+'url'=>'Youtube'
+);
+?>
+
+</body></html>

@@ -11,7 +11,7 @@
  * @package pictures
  * @see http://sourceforge.net/projects/cmsimplepctrs/
  * 
- *  Copyright 2012 - 2014 David Stutz
+ *  Copyright 2012 - 2018 David Stutz
  * 
  * 	This file is part of the pictures plugin for CMSimple.
  *

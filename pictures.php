@@ -11,7 +11,7 @@
  * @package pictures
  * @see http://sourceforge.net/projects/cmsimplepctrs/
  * 
- *  Copyright 2012 - 2014 David Stutz
+ *  Copyright 2012 - 2018 David Stutz
  * 
  * 	This file is part of the pictures plugin for CMSimple.
  *
@@ -98,7 +98,7 @@ class Pictures {
 	 *
 	 * Version.
 	 */
-	const VERSION = '1.0.2';
+	const VERSION = '1.0.3';
 	
 	/**
 	 * @public
@@ -190,7 +190,7 @@ class Pictures {
 	 */
 	public static function release_date() 
 	{
-	   return "31th October 2014";
+	   return "January 6th 2018";
 	}
 	
 	/**

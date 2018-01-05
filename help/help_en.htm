@@ -265,7 +265,7 @@
 					
 				<h2><a name="version">Version</a><a class="toplink" href="#">Back to top</a></h2>
 				
-					<p>This is currently version 1.0.2 of the plugin, released 31th October 2014.</p>
+					<p>This is currently version 1.0.3 of the plugin, released January 6th 2018.</p>
 				
 				<h2><a name="requirements">Requirements</a><a class="toplink" href="#">Back to top</a></h2>
 				
@@ -282,7 +282,8 @@
 							<li>CMSimple Realblog 1.5 or higher</li>
 							<li style="text-decoration: line-through;">CMSimple LE 3.4(.1) (Pluginloader needed, see installation guide below)</li>
 							<li style="text-decoration: line-through;">CMSimple 3.3 (Pluginloader needed, see installation guide below)</li>
-						</ul>
+                                                        <li>CMSimple 4.7.3.</li>
+                                                </ul>
 				
 					<h3><a name="requirements-jQuery4cmsimple">jQuery4CMSimple</a><a class="toplink" href="#">Back to top</a></h3>
 				
@@ -295,13 +296,15 @@
 				
 				<h2><a name="installation">Installation</a><a class="toplink" href="#">Back to top</a></h2>
 				
+                                        <p class="notice">Note that in CMSimple 4.7 or later, the CRSF protection needs to be disabled in order change configuration options. This means setting <code>$cf['use']['csrf_protection']="false";</code> in <code>cmsimple/config.php</code>.</p>
+                                
 					<h3><a name="installation-xh">CMSimple XH</a><a class="toplink" href="#">Back to top</a></h3>
 						<ul>
 							<li>Download the plugin.</li>
 							<li>In the <code>plugins</code> folder, create a subfolder <code>pictures</code>.</li>
 							<li>Extract the files into the <code>pictures</code> folder.</li>
 							<li>The plugin stores the gallery configurations in CSV files in /content/plugins/pictures. The folder is created automatically (mostly).This folder needs write and read permissions. The plugin does check this permissions and tries to alter this permissions if needed.</li>
-							<li>Go into backend and see if the installation is detected correctly.</li>
+							<li>Go into backend and see if the installation is detected correctly. In CMSimple 4.7.3, the plugin needs to be activated in the backend.</li>
 						</ul>
 				
 					<h3><a name="installation-other">CMSimple 3.3 and CMSimple LE</a><a class="toplink" href="#">Back to top</a></h3>
@@ -824,7 +827,8 @@ $plugin_cf["pictures"]["innerfade_template"] = "true";
 						<ul>
 							<li>CMSimple scripting: <b>#CMSimple $o .= pictures('galleryname', 'driver'); #</b></li>
 							<li>New CMSimple_XH scripting: <b>{{{PLUGIN:pictures('galleryname', 'driver');}}}</b></li>
-						</ul>
+                                                        <li>CMSimple 4.7 scripting: <b>{{{plugin:news('categoryname', 5);}}}</b> (old CMSimple scripting partly works, as well)</li>
+                                                </ul>
 						
 						<p>The function expects two parameters: The first one defines the gallery (string, not empty), the second one defines the used driver (string, default is 'table').</p>
 						
@@ -868,6 +872,7 @@ $plugin_cf["pictures"]["innerfade_template"] = "true";
 					<ul>
 						<li>CMSimple scripting: <b>#CMSimple $o .= pictures('galleryname', 'bxslider', TRUE); #</b></li>
 						<li>New CMSimple_XH scripting: <b>{{{PLUGIN:pictures('galleryname', 'bxslider', TRUE);}}}</b></li>
+                                                <li>CMSimple 4.7 scripting: <b>{{{plugin:news('categoryname', 5);}}}</b> (old CMSimple scripting partly works, as well)</li>
 						<li>In PHP: <b>&lt;?php echo pictures('galleryname', 'bxslider', TRUE); ?&gt;</b></li>
 					</ul>
 					
@@ -880,6 +885,7 @@ $plugin_cf["pictures"]["innerfade_template"] = "true";
 					<ul>
 						<li>CMSimple scripting: <b>#CMSimple $o .= pictures('galleryname', 'innerfade', TRUE); #</b></li>
 						<li>New CMSimple_XH scripting: <b>{{{PLUGIN:pictures('galleryname', 'innerfade', TRUE);}}}</b></li>
+                                                <li>CMSimple 4.7 scripting: <b>{{{plugin:news('categoryname', 5);}}}</b> (old CMSimple scripting partly works, as well)</li>
 						<li>In PHP: <b>&lt;?php echo pictures('galleryname', 'innerfade', TRUE); ?&gt;</b></li>
 					</ul>
 					
@@ -1523,6 +1529,12 @@ $plugin_cf["pictures"]["innerfade_template"] = "true";
 				
 					<h3><a name="changelog-1-0">Version 1.0</a><a class="toplink" href="#">Back to top</a></h3>
 				
+                        <h4>Version 1.0.3</h4>
+                                        
+                        <ul>
+                            <li>Tested on CMSimple 4.7.3.</li>
+                        </ul>
+                        
                         <h4>Version 1.0.2</h4>
                     
                         <ul>

@@ -27,19 +27,16 @@
  *
  *  @see <http://www.gnu.org/licenses/>.
  */
- 
-/*
- * Register the plugin menu items.
- */
-if (function_exists('XH_registerStandardPluginMenuItems')) {
-    XH_registerStandardPluginMenuItems(false);
-}
-
 
 /* Require classes. */
 if (!class_exists('Pictures', FALSE)) require_once dirname(__FILE__) . '/pictures.php';
 
-if (isset($pictures) OR isset($_GET['pictures']))
+if (function_exists('XH_registerStandardPluginMenuItems'))
+{
+    XH_registerStandardPluginMenuItems(true);
+}
+
+if ((function_exists('XH_wantsPluginAdministration') AND XH_wantsPluginAdministration('pictures')) OR isset($pictures))
 {
 	/* Make CMSimple global saccessable. */
 	global $sn;

@@ -58,7 +58,8 @@ if ((function_exists('XH_wantsPluginAdministration') AND XH_wantsPluginAdministr
 				. 'Released: ' . Pictures::release_date() . '<br />'
 				. 'Author: ' . Pictures::author() . '<br />'
 				. 'Website: ' . Pictures::website() . '<br />'
-                                . 'GitHub Repository/Releases: ' . Pictures::github() . '<br />'
+				. 'GitHub Repository/Releases: ' . Pictures::github() . '<br />'
+				. Pictures::donate() . '<br />'
 				. Pictures::description() . '<br />'
 				. Pictures::legal() . '<br />'
 				. '</div>';

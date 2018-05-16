@@ -10,6 +10,8 @@ Documentation: [http://davidstutz.de/cmsimpledemo/plugins/pictures/help/help_en.
 
 Demo: [http://davidstutz.de/cmsimpledemo/?Pictures](http://davidstutz.de/cmsimpledemo/?Pictures)
 
+Also consider [donating](http://davidstutz.de/donate/) to support this plugin.
+
 **Outdated** Sourceforge project: [https://sourceforge.net/projects/cmsimplepctrs](https://sourceforge.net/projects/cmsimplepctrs).
 
 Other CMSimple plugins:
